@@ -12,7 +12,7 @@ public class Main {
         m1.addTaxi(t3);
         m1.addTaxi(t1);
 
-      m1.addTaxi(t4);
+//      m1.addTaxi(t4);
         m1.addPassenger(p1);
         System.out.println(m1.NearestTaxi(p1));
 
