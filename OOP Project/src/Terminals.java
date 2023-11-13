@@ -1,2 +1,3 @@
-public class Terminals {
+public enum Terminals {
+    Lahore,Islamabad,Multan,Karachi
 }
