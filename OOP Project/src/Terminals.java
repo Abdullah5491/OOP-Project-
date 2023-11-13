@@ -1,3 +1,3 @@
 public enum Terminals {
-    Lahore,Islamabad,Multan,Karachi
+    Lahore,Islamabad,Multan,Karachi,
 }

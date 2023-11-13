@@ -3,7 +3,7 @@ public class Bus {
     private String Id;
     private Seat [][] Seats=new Seat[10][2];
     private String DepartureTime , ArrivalTime;
-    private Boolean Reserved;
+
 
     public String getDepartureTime() {
         return DepartureTime;
@@ -48,7 +48,19 @@ public class Bus {
         return Seats;
     }
 
+
     public void setSeats(Seat[][] seats) {
         Seats = seats;
+    }
+    public void intializeseats(){
+        for(int i=0;i<10;i++){
+            for(int j=0;j<2;j++){
+                Seats[i][j]=new Seat();
+                Seats[i][j].setSeatID(i);
+                Seats[i][j].setSeatPrice(100);
+                Seats[i][j].setCategory("Economy");
+                Seats[i][j].setReserved(false);
+            }
+        }
     }
 }
