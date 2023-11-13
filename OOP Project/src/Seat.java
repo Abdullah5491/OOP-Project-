@@ -27,9 +27,4 @@ public class Seat {
         Category = category;
     }
 
-    public Seat(int seatID, double seatPrice, String category) {
-        SeatID = seatID;
-        SeatPrice = seatPrice;
-        Category = category;
-    }
 }
