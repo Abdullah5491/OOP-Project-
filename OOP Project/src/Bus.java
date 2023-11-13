@@ -3,6 +3,31 @@ public class Bus {
     private String Id;
 
     private int [] Seats;
+    private String DepartureTime , ArrivalTime;
+
+    public String getDepartureTime() {
+        return DepartureTime;
+    }
+
+    public void setDepartureTime(String departureTime) {
+        DepartureTime = departureTime;
+    }
+
+    public String getArrivalTime() {
+        return ArrivalTime;
+    }
+
+    public void setArrivalTime(String arrivalTime) {
+        ArrivalTime = arrivalTime;
+    }
+
+    public Bus(String name, String id, int[] seats, String departureTime, String arrivalTime) {
+        this.name = name;
+        Id = id;
+        Seats = seats;
+        DepartureTime = departureTime;
+        ArrivalTime = arrivalTime;
+    }
 
     public String getName() {
         return name;
@@ -28,9 +53,5 @@ public class Bus {
         Seats = seats;
     }
 
-    public Bus(String name, String id, int[] seats) {
-        this.name = name;
-        Id = id;
-        Seats = seats;
-    }
+
 }
