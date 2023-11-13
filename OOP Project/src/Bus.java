@@ -52,5 +52,9 @@ public class Bus {
         Seats = seats;
     }
 
+    public void BookSeat(){
+
+    }
+
 
 }
