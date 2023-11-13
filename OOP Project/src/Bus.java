@@ -1,8 +1,9 @@
 public class Bus {
     private String name;
     private String Id;
-    private int [] Seats;
+    private Seat [][] Seats=new Seat[10][2];
     private String DepartureTime , ArrivalTime;
+    private Boolean Reserved;
 
     public String getDepartureTime() {
         return DepartureTime;
@@ -20,10 +21,9 @@ public class Bus {
         ArrivalTime = arrivalTime;
     }
 
-    public Bus(String name, String id, int[] seats, String departureTime, String arrivalTime) {
+    public Bus(String name, String id,  String departureTime, String arrivalTime) {
         this.name = name;
         Id = id;
-        Seats = seats;
         DepartureTime = departureTime;
         ArrivalTime = arrivalTime;
     }
@@ -44,17 +44,11 @@ public class Bus {
         Id = id;
     }
 
-    public int[] getSeats() {
+    public Seat[][] getSeats() {
         return Seats;
     }
 
-    public void setSeats(int[] seats) {
+    public void setSeats(Seat[][] seats) {
         Seats = seats;
     }
-
-    public void BookSeat(){
-
-    }
-
-
 }
