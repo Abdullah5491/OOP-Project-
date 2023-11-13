@@ -32,4 +32,7 @@ public class Seat {
         SeatPrice = seatPrice;
         Category = category;
     }
+    public String toString(){
+        return String.format("Seat ID: %d, Category: %s, Price: %.2f",SeatID,Category,SeatPrice);
+    }
 }

@@ -3,6 +3,7 @@ public class Bus {
     private String Id;
     private int [] Seats;
     private String DepartureTime , ArrivalTime;
+    private boolean status;
 
     public String getDepartureTime() {
         return DepartureTime;
@@ -20,12 +21,13 @@ public class Bus {
         ArrivalTime = arrivalTime;
     }
 
-    public Bus(String name, String id, int[] seats, String departureTime, String arrivalTime) {
+    public Bus(String name, String id, int[] seats, String departureTime, String arrivalTime, boolean status) {
         this.name = name;
         Id = id;
         Seats = seats;
         DepartureTime = departureTime;
         ArrivalTime = arrivalTime;
+        this.status=status;
     }
 
     public String getName() {
@@ -57,4 +59,7 @@ public class Bus {
     }
 
 
+    public boolean isAvailable() {
+        return isAvailable();
+    }
 }
