@@ -1,9 +1,22 @@
+import java.util.Arrays;
+
 public class Bus {
     private String name;
     private String Id;
     private Seat [][] Seats=new Seat[10][2];
     private String DepartureTime , ArrivalTime;
+    private String Date;
+    private Terminals DepartureTerminal,ArrivalTerminal;
 
+    public Bus(String name, String id, String departureTime, String arrivalTime,String Date ,Terminals departureTerminal, Terminals arrivalTerminal) {
+        this.name = name;
+        Id = id;
+        DepartureTime = departureTime;
+        ArrivalTime = arrivalTime;
+        DepartureTerminal = departureTerminal;
+        ArrivalTerminal = arrivalTerminal;
+        this.Date=Date;
+    }
 
     public String getDepartureTime() {
         return DepartureTime;
@@ -21,12 +34,6 @@ public class Bus {
         ArrivalTime = arrivalTime;
     }
 
-    public Bus(String name, String id,  String departureTime, String arrivalTime) {
-        this.name = name;
-        Id = id;
-        DepartureTime = departureTime;
-        ArrivalTime = arrivalTime;
-    }
 
     public String getName() {
         return name;
@@ -52,15 +59,30 @@ public class Bus {
     public void setSeats(Seat[][] seats) {
         Seats = seats;
     }
-    public void intializeseats(){
+    {  int counter=1;
         for(int i=0;i<10;i++){
             for(int j=0;j<2;j++){
                 Seats[i][j]=new Seat();
-                Seats[i][j].setSeatID(i);
-                Seats[i][j].setSeatPrice(100);
-                Seats[i][j].setCategory("Economy");
+                Seats[i][j].setSeatID(counter++);
+                Seats[i][j].setSeatPrice(1000);
+                Seats[i][j].setCategory("luxury");
+                if (i>=4)
+                    Seats[i][j].setCategory("economy");
                 Seats[i][j].setReserved(false);
             }
         }
+    }
+   public void ShowSeats(){
+        for(int i=0;i<10;i++){
+            for(int j=0;j<2;j++){
+                System.out.println(Seats[i][j]);
+            }
+        }
+    }
+
+
+    @Override
+    public String toString() {
+        return String.format("Bus Name: %s, BUS Id: %s, Departure Time: %s, Arrival Time: %s",name,Id,DepartureTime,ArrivalTime);
     }
 }

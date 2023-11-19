@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+
 public class Passenger {
     private String name;
     private int Id;
     private String gender;
+   public ArrayList<Seat> Bookedseats=new ArrayList<>();
 
     public Passenger(String name, int id,String gender) {
         this.name = name;
@@ -35,6 +38,18 @@ public class Passenger {
     }
 
     public String toString(){
-        return String.format("Name: %s, Id: %d, Gender: %s",name,Id,gender);
+        return String.format("Passenger Name: %s, Passenger Id: %d, Gender: %s",name,Id,gender);
     }
+
+    public void removeBookedSeat(Seat s){
+            s.setReserved(false);
+            Bookedseats.remove(s);
+        }
+        public void displayBookedSeats(){
+            for(Seat s:Bookedseats){
+                System.out.println(s);
+            }
+        }
+
+
 }

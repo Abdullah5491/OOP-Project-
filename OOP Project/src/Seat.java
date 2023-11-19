@@ -35,4 +35,7 @@ public class Seat {
     public void setReserved(Boolean reserved) {
         Reserved = reserved;
     }
+    public String toString(){
+        return String.format("Seat ID: %d,  Seat Price: %.2f,  Category: %s,  Reserved: %b",SeatID,SeatPrice,Category,Reserved);
+    }
 }
