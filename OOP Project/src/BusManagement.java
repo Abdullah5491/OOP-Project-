@@ -3,7 +3,8 @@ import java.util.Scanner;
 
 public class BusManagement {
     ArrayList<Passenger> passengers = new ArrayList<>();
-    public static ArrayList<Bus> buses = new ArrayList<>();
+    public  static ArrayList<Bus> buses = new ArrayList<>();
+    public ArrayList<Discounts> discounts = new ArrayList<>();
 
     public void displayBuses() {
         for (Bus b : buses) {
@@ -35,7 +36,6 @@ public class BusManagement {
 
         }
     }
-
     public void CancelTicket(int pessengerID, int SeatID, String BusName) {
         for (int i = 0; i < buses.size(); i++) {
             if (buses.get(i).getName().equals(BusName)) {

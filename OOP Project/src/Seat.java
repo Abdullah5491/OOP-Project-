@@ -39,4 +39,6 @@ public class Seat {
     public String toString(){
         return String.format("Seat ID: %d,  Seat Price: %.2f,  Category: %s,  Reserved: %b",SeatID,SeatPrice,Category,Reserved);
     }
+
+
 }
