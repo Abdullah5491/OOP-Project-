@@ -4,6 +4,8 @@ public class Passenger {
     private String name;
     private int Id;
     private String gender;
+    private int contactNumber;
+    private String emailAddress;
    public ArrayList<Seat> Bookedseats=new ArrayList<>();
 
     public Passenger(String name, int id,String gender) {
@@ -11,6 +13,46 @@ public class Passenger {
         this.Id = id;
         this.gender=gender;
 
+    }
+
+    public Passenger(String name, int id, String gender, int contactNumber, String emailAddress) {
+        this.name = name;
+        Id = id;
+        this.gender = gender;
+        this.contactNumber = contactNumber;
+        this.emailAddress = emailAddress;
+
+    }
+    public Passenger(String name, int id, String gender,  String emailAddress) {
+        this.name = name;
+        Id = id;
+        this.gender = gender;
+        this.emailAddress = emailAddress;
+
+    }
+
+    public Passenger(String name, int id, String gender, int contactNumber) {
+        this.name = name;
+        Id = id;
+        this.gender = gender;
+        this.contactNumber = contactNumber;
+
+    }
+
+    public int getContactNumber() {
+        return contactNumber;
+    }
+
+    public void setContactNumber(int contactNumber) {
+        this.contactNumber = contactNumber;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public String getName() {

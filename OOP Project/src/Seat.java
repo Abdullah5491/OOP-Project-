@@ -28,6 +28,7 @@ public class Seat {
         Category = category;
     }
 
+
     public Boolean getReserved() {
         return Reserved;
     }

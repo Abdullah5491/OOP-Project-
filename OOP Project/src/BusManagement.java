@@ -18,9 +18,9 @@ public class BusManagement {
     }
 
 
-    public void bookTicket(int SeatId, int passengerID, String BusName) {
+    public void bookTicket(int SeatId, int passengerID, String BusId) {
         for (int i = 0; i < buses.size(); i++) {
-            if (buses.get(i).getName().equals(BusName)) {
+            if (buses.get(i).getId().equals(BusId)) {
                 for (int j = 0; j < 10; j++)
                     for (int k = 0; k < 2; k++)
                         if (buses.get(i).getSeats()[j][k].getSeatID() == SeatId && !buses.get(i).getSeats()[j][k].getReserved()) {
@@ -55,10 +55,36 @@ public class BusManagement {
 
     }
 
-    public void UpdateTicket() {
-
+    public void showAvailableBuses(String Departure, String Arrival) {
+        for (int i = 0; i < buses.size(); i++) {
+            if (buses.get(i).getDepartureTerminal().toString().equals(Departure) && buses.get(i).getArrivalTerminal().toString().equals(Arrival)) {
+                System.out.println(buses.get(i));
+            }
+        }
     }
-
+    public void showAvailableBuses(String Departure, String Arrival,String Date) {
+        for (int i = 0; i < buses.size(); i++) {
+            if (buses.get(i).getDepartureTerminal().toString().equals(Departure) && buses.get(i).getArrivalTerminal().toString().equals(Arrival) && buses.get(i).getDate().equals(Date)) {
+                System.out.println(buses.get(i));
+            }
+        }
+    }
+    public void showAvailableBuses(String Departure, String Arrival,String Date,String DepartureTime) {
+        for (int i = 0; i < buses.size(); i++) {
+            if (buses.get(i).getDepartureTerminal().toString().equals(Departure) && buses.get(i).getArrivalTerminal().toString().equals(Arrival) && buses.get(i).getDate().equals(Date) && buses.get(i).getDepartureTime().equals(DepartureTime)) {
+                System.out.println(buses.get(i));
+            }
+        }
+    }
+    public void sortBuses(){
+        for (int i=0;i<buses.size();i++)
+            for (int j=0;j<buses.size()-1;j++)
+                if (buses.get(j).getDepartureTime().compareTo(buses.get(j+1).getDepartureTime())>0){
+                    Bus temp=buses.get(j);
+                    buses.set(j,buses.get(j+1));
+                    buses.set(j+1,temp);
+                }
+    }
     public void showTicketDetails(int passengerID) {
        for (int i=0;i<buses.size();i++)
               for (int j=0;j<10;j++)

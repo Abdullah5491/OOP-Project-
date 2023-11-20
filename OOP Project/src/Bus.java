@@ -55,6 +55,29 @@ public class Bus {
         return Seats;
     }
 
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
+    }
+
+    public Terminals getDepartureTerminal() {
+        return DepartureTerminal;
+    }
+
+    public void setDepartureTerminal(Terminals departureTerminal) {
+        DepartureTerminal = departureTerminal;
+    }
+
+    public Terminals getArrivalTerminal() {
+        return ArrivalTerminal;
+    }
+
+    public void setArrivalTerminal(Terminals arrivalTerminal) {
+        ArrivalTerminal = arrivalTerminal;
+    }
 
     public void setSeats(Seat[][] seats) {
         Seats = seats;
@@ -85,4 +108,6 @@ public class Bus {
     public String toString() {
         return String.format("Bus Name: %s, BUS Id: %s, Departure Time: %s, Arrival Time: %s",name,Id,DepartureTime,ArrivalTime);
     }
+
+
 }
