@@ -4,8 +4,7 @@ public class Passenger {
     private String name;
     private int Id;
     private String gender;
-    private int contactNumber;
-    private String emailAddress;
+    private Accounts account;
    public ArrayList<Seat> Bookedseats=new ArrayList<>();
 
     public Passenger(String name, int id,String gender) {
@@ -15,45 +14,28 @@ public class Passenger {
 
     }
 
-    public Passenger(String name, int id, String gender, int contactNumber, String emailAddress) {
+    public Passenger(String name, int id, String gender, String emailAddress, String contactNumber, String password) {
         this.name = name;
         Id = id;
         this.gender = gender;
-        this.contactNumber = contactNumber;
-        this.emailAddress = emailAddress;
+        this.account = new Accounts(emailAddress, contactNumber, password);
 
     }
-    public Passenger(String name, int id, String gender,  String emailAddress) {
+    public Passenger(String name, int id, String gender, String contactNumber, String password) {
         this.name = name;
         Id = id;
         this.gender = gender;
-        this.emailAddress = emailAddress;
+        this.account = new Accounts(contactNumber, password);
 
     }
-
-    public Passenger(String name, int id, String gender, int contactNumber) {
+    public Passenger(String name, String emailAddress,int id, String gender,  String password) {
         this.name = name;
         Id = id;
         this.gender = gender;
-        this.contactNumber = contactNumber;
+        this.account = new Accounts(emailAddress, password);
 
     }
 
-    public int getContactNumber() {
-        return contactNumber;
-    }
-
-    public void setContactNumber(int contactNumber) {
-        this.contactNumber = contactNumber;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
 
     public String getName() {
         return name;
@@ -77,6 +59,22 @@ public class Passenger {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    public Accounts getAccount() {
+        return account;
+    }
+
+    public ArrayList<Seat> getBookedseats() {
+        return Bookedseats;
+    }
+
+    public void setBookedseats(ArrayList<Seat> bookedseats) {
+        Bookedseats = bookedseats;
+    }
+
+    public void setAccount(Accounts account) {
+        this.account = account;
     }
 
     public String toString(){

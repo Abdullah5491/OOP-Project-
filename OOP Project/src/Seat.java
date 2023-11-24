@@ -3,6 +3,33 @@ public class Seat {
     private double SeatPrice;
     private String Category;
     private Boolean Reserved;
+    private int BookingID;
+    private String BookingDate;
+    private String BookingTime;
+
+    public int getBookingID() {
+        return BookingID;
+    }
+
+    public void setBookingID(int bookingID) {
+        BookingID = bookingID;
+    }
+
+    public String getBookingDate() {
+        return BookingDate;
+    }
+
+    public void setBookingDate(String bookingDate) {
+        BookingDate = bookingDate;
+    }
+
+    public String getBookingTime() {
+        return BookingTime;
+    }
+
+    public void setBookingTime(String bookingTime) {
+        BookingTime = bookingTime;
+    }
 
     public int getSeatID() {
         return SeatID;

@@ -2,8 +2,6 @@ public class Discounts {
     private String DiscountCode;
     private double DiscountPercentage;
 
-    private double Discount;
-
 
     public Discounts(String discountCode, double discountPercentage) {
         DiscountCode = discountCode;
