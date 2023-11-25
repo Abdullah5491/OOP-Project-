@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bookthebus.LoginController">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="228.0" style="-fx-background-color: #804d00;" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="58.0" layoutY="102.0" text="Route Rider" textAlignment="CENTER" textFill="WHITE">
+               <font>
+                  <Font name="Mistral" size="30.0" />
+               </font>
+            </Label>
+            <Label alignment="CENTER" layoutX="14.0" layoutY="356.0" prefHeight="29.0" prefWidth="200.0" text="Route Rider © 2023 All Rights Reserved." textFill="WHITE">
+               <font>
+                  <Font name="Tw Cen MT Italic" size="11.0" />
+               </font>
+            </Label>
+            <Circle fill="#1f93ff00" layoutX="114.0" layoutY="166.0" radius="100.0" stroke="#ffffff3f" strokeType="INSIDE" />
+            <Line endX="100.0" layoutX="84.0" layoutY="148.0" startX="-40.83332443237305" stroke="WHITE" />
+            <ImageView fitHeight="69.0" fitWidth="116.0" layoutX="56.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/Bus.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="332.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="104.0" layoutY="37.0" prefHeight="20.0" prefWidth="106.0" text="Secure Login">
+               <font>
+                  <Font name="Arial" size="17.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="102.0" prefHeight="17.0" prefWidth="81.0" text="Username">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="140.0" prefHeight="15.0" prefWidth="81.0" text="Password">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="Username" layoutX="96.0" layoutY="99.0" prefHeight="20.0" prefWidth="149.0" />
+            <PasswordField fx:id="Password" layoutX="96.0" layoutY="138.0" prefHeight="19.0" prefWidth="149.0" />
+            <Button fx:id="LoginButton" alignment="CENTER" layoutX="32.0" layoutY="226.0" mnemonicParsing="false" onAction="#loginbuttononaction" prefHeight="27.0" prefWidth="228.0" stylesheets="@Stylesheet.css" text="Login" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="Signup" layoutX="31.0" layoutY="262.0" mnemonicParsing="false" onAction="#signupbuttononaction" prefHeight="27.0" prefWidth="229.0" stylesheets="@Stylesheet.css" text="Sign up" textFill="WHITE">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
+            <Button fx:id="forgotPassword" layoutX="91.0" layoutY="174.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="111.0" style="-fx-background-color: null;" text="Forgot password?" />
+            <Label fx:id="Displaymessage" alignment="CENTER" layoutX="27.0" layoutY="70.0" prefHeight="17.0" prefWidth="240.0" textAlignment="CENTER" textFill="RED" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
