@@ -6,27 +6,30 @@ public class BusStaff  {
 
 
     private String Staffname;
-    private long StaffId;
+    private String StaffId;
     private StaffRoles role;
     private Accounts account;
     private double salary;
 
+
     public ArrayList<Bus> buseDuties=new ArrayList<>();
 
-    public BusStaff(String staffname, long staffId, StaffRoles role, double salary, String contactNumber, String emailAddress, String password) {
+    public BusStaff(String staffname, String staffId, StaffRoles role, double salary, String contactNumber, String emailAddress, String password) {
         Staffname = staffname;
         StaffId = staffId;
         this.role = role;
         this.account = new Accounts(emailAddress, contactNumber, password);
         this.salary = salary;
     }
-    public BusStaff(String staffname, long staffId, StaffRoles role, double salary,String contactNumber, String password) {
-        Staffname = staffname;
-        StaffId = staffId;
-        this.role = role;
-        this.account = new Accounts(contactNumber, password);
-        this.salary = salary;
-    }
+
+
+    //    public BusStaff(String staffname, long staffId, StaffRoles role, double salary,String contactNumber, String password) {
+//        Staffname = staffname;
+//        StaffId = staffId;
+//        this.role = role;
+//        this.account = new Accounts(contactNumber, password);
+//        this.salary = salary;
+//    }
 
     public String getStaffname() {
         return Staffname;
@@ -36,11 +39,11 @@ public class BusStaff  {
         Staffname = staffname;
     }
 
-    public long getStaffId() {
+    public String getStaffId() {
         return StaffId;
     }
 
-    public void setStaffId(long staffId) {
+    public void setStaffId(String staffId) {
         StaffId = staffId;
     }
 

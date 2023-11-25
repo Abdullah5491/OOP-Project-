@@ -8,7 +8,7 @@ public class Main {
         Passenger p1=new Passenger ("Ali","a@gmail.com","36401","male","123456","123456");
        // Passenger p2=new Passenger("Alina","232","Female");
         Bus b2=new Bus("Daewoo","Da 125","2:00","13:00","10/10/2023",Terminals.Karachi,Terminals.Islamabad, BusCategory.Gold,"12/07/2023");
-        BusStaff staff=new BusStaff("Ahmad",231,StaffRoles.Manager,500,"0321-1234567","ali@gmail.com","123456");
+        BusStaff staff=new BusStaff("Ahmad","231",StaffRoles.Manager,500,"0321-1234567","ali@gmail.com","123456");
 
         BusManagement M1=new BusManagement();
 

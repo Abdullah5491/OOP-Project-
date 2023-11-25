@@ -76,7 +76,7 @@ public class RegisterController {
         }
         else {
             Accounts a1 = new Accounts(emailaddress.getText(), registrationPassword.getText());
-            Passenger p1 =new Passenger(FullName.getText(),CNIC.getId(),"male",emailaddress.getText(),ContactNumber.getText(),registrationPassword.getText());
+            Passenger p1 =new Passenger(FullName.getText(),CNIC.getText(),"male",emailaddress.getText(),ContactNumber.getText(),registrationPassword.getText());
            BusManagement.addPassenger(p1);
 
             Displaymessage.setText("Signup Successful");}

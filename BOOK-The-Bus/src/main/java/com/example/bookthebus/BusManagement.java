@@ -44,6 +44,90 @@ public class BusManagement {
         }
 
     }
+    {
+        try {
+            File file2= new File("Buses.txt");
+            if (file2.createNewFile()) {
+                System.out.println("File created: " + file2.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        }
+        catch (Exception e){
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        try {
+            FileWriter writer = new FileWriter("Buses.txt",true);
+            for (int i = 0; i < buses.size(); i++) {
+                writer.write(buses.get(i).getName() + "\n");
+                writer.write(buses.get(i).getId() + "\n");
+                writer.write(buses.get(i).getDepartureTime() + "\n");
+                writer.write(buses.get(i).getArrivalTime() + "\n");
+                writer.write(buses.get(i).getDate() + "\n");
+                writer.write(buses.get(i).getDepartureTerminal().toString() + "\n");
+                writer.write(buses.get(i).getArrivalTerminal().toString() + "\n");
+                writer.write(buses.get(i).getCategory().toString() + "\n");
+                writer.write(buses.get(i).getDepartureDate() + "\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    {
+        try {
+            File file3= new File("Discounts.txt");
+            if (file3.createNewFile()) {
+                System.out.println("File created: " + file3.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        }
+        catch (Exception e){
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        try {
+            FileWriter writer = new FileWriter("Discounts.txt",true);
+            for (int i = 0; i < discounts.size(); i++) {
+                writer.write(discounts.get(i).getDiscountCode() + "\n");
+                writer.write(discounts.get(i).getDiscountPercentage() + "\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+    {
+        try {
+            File file4= new File("BusStaff.txt");
+            if (file4.createNewFile()) {
+                System.out.println("File created: " + file4.getName());
+            } else {
+                System.out.println("File already exists.");
+            }
+        }
+        catch (Exception e){
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        try {
+            FileWriter writer = new FileWriter("BusStaff.txt",true);
+            for (int i = 0; i < busStaff.size(); i++) {
+                writer.write(busStaff.get(i).getStaffname() + "\n");
+                writer.write(busStaff.get(i).getStaffId() + "\n");
+                writer.write(busStaff.get(i).getRole().toString() + "\n");
+                writer.write(busStaff.get(i).getSalary() + "\n");
+                writer.write(busStaff.get(i).getAccount().getContactNumber() + "\n");
+                writer.write(busStaff.get(i).getAccount().getEmailAddress() + "\n");
+                writer.write(busStaff.get(i).getAccount().getPassword() + "\n");
+            }
+            writer.close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
         public boolean addBus(Bus bus){
     for (int i=0;i<buses.size();i++)
@@ -80,11 +164,11 @@ public static boolean addPassenger(Passenger passenger){
             }
         busStaff.add(staff);
     }
-    public void assignstaffduty(String BusId, int staffID, StaffRoles role) {
+    public void assignstaffduty(String BusId, String staffID, StaffRoles role) {
         for (int i = 0; i < buses.size(); i++) {
             if (buses.get(i).getId().equals(BusId)) {
                 for (int j = 0; j < busStaff.size(); j++) {
-                    if (busStaff.get(j).getStaffId() == staffID) {
+                    if (busStaff.get(j).getStaffId().equals(staffID)) {
                         if (role == StaffRoles.Driver) {
                             buses.get(i).setDriver(busStaff.get(j));
                             busStaff.get(j).buseDuties.add(buses.get(i));
@@ -99,10 +183,10 @@ public static boolean addPassenger(Passenger passenger){
         }
     }
 
-public void showStaffDuties(int staffID){
+public void showStaffDuties(String staffID){
 
         for (int i=0;i<busStaff.size();i++)
-            if (busStaff.get(i).getStaffId()==staffID){
+            if (busStaff.get(i).getStaffId().equals(staffID)){
                 System.out.println(busStaff.get(i).buseDuties);
             }
  }
@@ -250,9 +334,9 @@ public void showStaffDuties(int staffID){
                 System.out.println(passengers.get(i).getAccount());
             }
     }
-    public void StaffAccountDetails(int staffID){
+    public void StaffAccountDetails(String staffID){
         for (int i=0;i<busStaff.size();i++)
-            if (busStaff.get(i).getStaffId()==staffID){
+            if (busStaff.get(i).getStaffId().equals(staffID)){
                 System.out.println(busStaff.get(i).getAccount());
             }
     }
