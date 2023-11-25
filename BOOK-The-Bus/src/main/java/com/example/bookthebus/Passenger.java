@@ -4,39 +4,39 @@ import java.util.ArrayList;
 
 public class Passenger {
     private String name;
-    private long Id;
+    private String Id;
     private String gender;
     private Accounts account;
    public ArrayList<Seat> Bookedseats=new ArrayList<>();
 
-    public Passenger(String name, long id,String gender) {
-        this.name = name;
-        this.Id = id;
-        this.gender=gender;
+//    public Passenger(String name, String id,String gender) {
+//        this.name = name;
+//        this.Id = id;
+//        this.gender=gender;
+//
+//    }
 
-    }
-
-    public Passenger(String name, long id, String gender, String emailAddress, String contactNumber, String password) {
+    public Passenger(String name, String id, String gender, String emailAddress, String contactNumber, String password) {
         this.name = name;
         Id = id;
         this.gender = gender;
         this.account = new Accounts(emailAddress, contactNumber, password);
 
     }
-    public Passenger(String name, long id, String gender, String contactNumber, String password) {
-        this.name = name;
-        Id = id;
-        this.gender = gender;
-        this.account = new Accounts(contactNumber, password);
-
-    }
-    public Passenger(String name, String emailAddress,long id, String gender,  String password) {
-        this.name = name;
-        Id = id;
-        this.gender = gender;
-        this.account = new Accounts(emailAddress, password);
-
-    }
+//    public Passenger(String name, long id, String gender, String contactNumber, String password) {
+//        this.name = name;
+//        Id = id;
+//        this.gender = gender;
+//        this.account = new Accounts(contactNumber, password);
+//
+//    }
+//    public Passenger(String name, String emailAddress,long id, String gender,  String password) {
+//        this.name = name;
+//        Id = id;
+//        this.gender = gender;
+//        this.account = new Accounts(emailAddress, password);
+//
+//    }
 
 
     public String getName() {
@@ -47,11 +47,11 @@ public class Passenger {
         this.name = name;
     }
 
-    public long getId() {
+    public String getId() {
         return Id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         Id = id;
     }
 

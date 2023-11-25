@@ -14,16 +14,42 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.controlsfx.control.action.Action;
 
+import java.io.File;
 import java.io.IOException;
 import java.security.spec.MGF1ParameterSpec;
 import java.util.EventObject;
+import java.util.Scanner;
 
 public class LoginController {
     BusManagement M1 = new BusManagement();
-    Passenger p1=new Passenger("Ali",36401,"Male","ali","03246882133","123456");
+    Passenger p1=new Passenger("Ali","3640107967411","Male","ali","03246882133","123456");
     {
         M1.passengers.add(p1);
     }
+    {
+        try {
+            Scanner scanner = new Scanner(new File("Passengers.txt"));
+            while (scanner.hasNext()) {
+                String name = scanner.nextLine();
+                String id = scanner.nextLine();
+                String gender = scanner.nextLine();
+                String emailAddress = scanner.nextLine();
+                String contactNumber = scanner.nextLine();
+                String password = scanner.nextLine();
+
+                Passenger passenger = new Passenger(name, id, gender, emailAddress, contactNumber, password);
+
+                BusManagement.passengers.add(passenger);
+            }
+            scanner.close();
+        } catch (IOException e) {
+            System.out.println("An error occurred while reading from the file.");
+            e.printStackTrace();
+        }
+
+
+    }
+
 
 
 
@@ -76,7 +102,6 @@ public class LoginController {
         window.setScene(scene);
         window.show();
     }
-
 
 
 }
