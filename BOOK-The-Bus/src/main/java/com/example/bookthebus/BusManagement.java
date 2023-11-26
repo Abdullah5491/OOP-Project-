@@ -128,7 +128,6 @@ public class BusManagement {
             throw new RuntimeException(e);
         }
     }
-
         public boolean addBus(Bus bus){
     for (int i=0;i<buses.size();i++)
         if (buses.get(i).getId().equals(bus.getId())&&buses.get(i).getDate().equals(bus.getDate())){
@@ -141,7 +140,7 @@ public class BusManagement {
 }
 public static boolean addPassenger(Passenger passenger){
     for (int i=0;i<passengers.size();i++)
-        if (passengers.get(i).getId().equals(passenger.getId())){
+        if (passengers.get(i).getId().equals(passenger.getId()) && passengers.get(i).getAccount().getEmailAddress().equals(passenger.getAccount().getEmailAddress())){
             System.out.println("Passenger with this ID already exists");
             return false;
         }
@@ -222,6 +221,7 @@ public void showStaffDuties(String staffID){
                                     buses.get(i).getSeats()[j][k].setReserved(true);
                                     buses.get(i).getSeats()[j][k].setBookingID(bookingcounter++);
                                     buses.get(i).addSales(buses.get(i).getSeats()[j][k].getSeatPrice());
+                                    buses.get(i).setAvailableSeats(buses.get(i).getAvailableSeats()-1);
 
                                 }
                             }
@@ -243,6 +243,7 @@ public void showStaffDuties(String staffID){
                                     buses.get(i).getSeats()[j][k].setReserved(true);
                                     buses.get(i).getSeats()[j][k].setBookingID(bookingcounter++);
                                     buses.get(i).addSales(buses.get(i).getSeats()[j][k].getSeatPrice());
+                                    buses.get(i).setAvailableSeats(buses.get(i).getAvailableSeats()-1);
 
                                     for (int m=0;m<discounts.size();m++){
                                         if (discounts.get(m).getDiscountCode().equals(Discountcode)){
@@ -284,13 +285,14 @@ public void showStaffDuties(String staffID){
             }
         }
     }
-    public void showAvailableBuses(String Departure, String Arrival,String Date) {
+    public static Bus showAvailableBuses(String Departure, String Arrival,String Date) {
         for (int i = 0; i < buses.size(); i++) {
             if (buses.get(i).getDepartureTerminal().toString().equals(Departure) && buses.get(i).getArrivalTerminal().toString().equals(Arrival) && buses.get(i).getDate().equals(Date)) {
                 System.out.println(buses.get(i));
+                return buses.get(i);
             }
         }
-    }
+   return null; }
     public void showAvailableBuses(String Departure, String Arrival,String Date,String DepartureTime) {
         for (int i = 0; i < buses.size(); i++) {
             if (buses.get(i).getDepartureTerminal().toString().equals(Departure) && buses.get(i).getArrivalTerminal().toString().equals(Arrival) && buses.get(i).getDate().equals(Date) && buses.get(i).getDepartureTime().equals(DepartureTime)) {

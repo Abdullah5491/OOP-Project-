@@ -5,3 +5,35 @@
     -fx-background-color: #2eb4a9;
     -fx-text-fill: #ffffff;
 }
+.bus{
+    -fx-background-color:#2270ae;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: reem kufi;
+    -fx-font-size: 20px;
+}
+.insideanchor{
+    -fx-background-color: #ffffff;
+
+    -fx-background-radius: 10px;
+}
+.icon{
+    -fx-color: white;
+}
+.combo-box{
+
+    -fx-background-radius: 4px;
+    -fx-text-fill: #8cbee7;
+}
+. DisplayMessage{
+    -fx-text-fill: #ff0000;
+}
+.searchbutton{
+    -fx-background-color: #2270ae;
+    -fx-text-fill: #ffffff;
+    -fx-font-family: reem kufi;
+    -fx-background-radius: 5px;
+}
+.searchbutton:pressed{
+    -fx-background-color: #2eb4a9;
+    -fx-text-fill: #ffffff;
+}

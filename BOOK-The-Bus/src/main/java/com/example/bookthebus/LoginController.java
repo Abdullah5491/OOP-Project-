@@ -1,6 +1,5 @@
 package com.example.bookthebus;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,19 +11,17 @@ import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.controlsfx.control.action.Action;
+import javafx.stage.Window;
 
 import java.io.File;
 import java.io.IOException;
-import java.security.spec.MGF1ParameterSpec;
-import java.util.EventObject;
 import java.util.Scanner;
 
 public class LoginController {
     BusManagement M1 = new BusManagement();
     Passenger p1=new Passenger("Ali","3640107967411","Male","ali","03246882133","123456");
     {
-        M1.passengers.add(p1);
+        BusManagement.addPassenger(p1);
     }
     {
         try {
@@ -74,7 +71,7 @@ public class LoginController {
 
 
 
-    public void loginbuttononaction(ActionEvent e) {
+    public void loginbuttononaction(ActionEvent e) throws IOException {
         if (Username.getText().isBlank() && Password.getText().isBlank()) {
             Displaymessage.setText("Please Enter Username and Password");
         } else if (Username.getText().isBlank()) {
@@ -85,7 +82,23 @@ public class LoginController {
             for (int i = 0; i < BusManagement.passengers.size(); i++) {
                 if (BusManagement.passengers.get(i).getAccount().getEmailAddress().equals(Username.getText()) && !BusManagement.passengers.get(i).getAccount().getEmailAddress().isEmpty() && !BusManagement.passengers.get(i).getAccount().getPassword().isEmpty() && BusManagement.passengers.get(i).getAccount().getPassword().equals(Password.getText())) {
                     Displaymessage.setText("Login Successful");
+                    try {
+                        Node source = (Node) e.getSource();
+                        Scene scene = source.getScene();
+                        if (scene != null) {
+                            Window window = scene.getWindow();
+                            if (window instanceof Stage) {
+                                Stage stage = (Stage) window;
+                                Parent root = FXMLLoader.load(getClass().getResource("PassengerDashboard.fxml"));
+                                stage.setScene(new Scene(root));
+                                stage.show();
+                            }
+                        }
+                    }catch (IOException ignored) {
+
+                    }
                 }
+
                 else {
                     Displaymessage.setText("Invalid Username or Password");
                 }
@@ -94,6 +107,7 @@ public class LoginController {
             }
         }
     }
+
 
     public void signupbuttononaction(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Register.fxml"));

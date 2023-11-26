@@ -23,6 +23,7 @@ public class Bus {
     private double TotalExpense;
     private double TotalProfit;
     private String DepartureDate;
+    private int AvailableSeats=32;
 
 
     public Bus(String name, String id, String departureTime, String arrivalTime, String Date, Terminals departureTerminal, Terminals arrivalTerminal, BusCategory category, String departureDate) {
@@ -125,7 +126,13 @@ public class Bus {
         TotalExpense = totalExpense;
     }
 
+    public int getAvailableSeats() {
+        return AvailableSeats;
+    }
 
+    public void setAvailableSeats(int availableSeats) {
+        AvailableSeats = availableSeats;
+    }
 
     public BusStaff getDriver() {
         return driver;

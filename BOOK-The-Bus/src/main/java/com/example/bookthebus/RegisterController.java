@@ -46,6 +46,7 @@ public class RegisterController {
     private Label Displaymessage;
     @FXML
     private TextField CNIC;
+    private String Gender ="Female";
 
     public void signinbuttononaction(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
@@ -53,6 +54,11 @@ public class RegisterController {
         Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
+    }
+    public void initialize() {
+        ToggleGroup group = new ToggleGroup();
+        Maleradio.setToggleGroup(group);
+        femaleradio.setToggleGroup(group);
     }
 
     public void setSignupaction(ActionEvent e) {
@@ -62,28 +68,38 @@ public class RegisterController {
             Displaymessage.setText("Please Enter Full Name");
         } else if (emailaddress.getText().isBlank()) {
             Displaymessage.setText("Please Enter Email Address");
-        } else if (ContactNumber.getText().isBlank()) {
-            Displaymessage.setText("Please Enter Contact Number");
-        } else if (CNIC.getText().isBlank()) {
-            Displaymessage.setText("Please Enter CNIC");
-        } else if (registrationPassword.getText().isBlank()) {
+        } else if (ContactNumber.getText().isBlank()||ContactNumber.getText().length()!=11) {
+            Displaymessage.setText("Please Enter a valid Contact Number");
+        } else if (CNIC.getText().isBlank()||CNIC.getText().length()!=13) {
+            Displaymessage.setText("Please Enter valid CNIC number");
+        } else if (registrationPassword.getText().isBlank()||registrationPassword.getText().length()<8) {
             Displaymessage.setText("Please Enter Password");
         } else if (ConfirmPass.getText().isBlank()) {
             Displaymessage.setText("Please Confirm the Password");
-        }
-        else if (!registrationPassword.getText().equals(ConfirmPass.getText())){
+        } else if (!registrationPassword.getText().equals(ConfirmPass.getText())) {
             Displaymessage.setText("Password does not match");
-        }
-        else {
+        } else if (!Maleradio.isSelected() && !femaleradio.isSelected()) {
+            Displaymessage.setText("Please select the gender");
+        } else if (!termandcondition.isSelected()) {
+            Displaymessage.setText("Please Accept Terms and Conditions");
+        } else {
+            if (Maleradio.isSelected()){
+                this.Gender ="Male";
+                System.out.println(Gender);
+            }
             Accounts a1 = new Accounts(emailaddress.getText(), registrationPassword.getText());
-            Passenger p1 =new Passenger(FullName.getText(),CNIC.getText(),"male",emailaddress.getText(),ContactNumber.getText(),registrationPassword.getText());
-           BusManagement.addPassenger(p1);
+            Passenger p1 = new Passenger(FullName.getText(), CNIC.getText(),Gender, emailaddress.getText(), ContactNumber.getText(), registrationPassword.getText());
+            if (!BusManagement.addPassenger(p1)) {
+                Displaymessage.setText("Email Address already exists");
+            }else {
 
-            Displaymessage.setText("Signup Successful");}
+                Displaymessage.setText("Signup Successful");
+            }
         }
 
 
     }
+}
 
 
 

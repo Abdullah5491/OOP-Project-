@@ -1,14 +1,83 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.bookthebus.PessengerMenuController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="635.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bookthebus.PessengerMenuController">
+   <children>
+      <AnchorPane layoutX="-3.0" layoutY="92.0" prefHeight="260.0" prefWidth="609.0" style="-fx-background-color: #2270ae;">
+         <children>
+            <Label id="bus" layoutX="36.0" layoutY="14.0" styleClass="bus" stylesheets="@Stylesheet.css" text="Bus Booking Tickets" textFill="WHITE">
+               <font>
+                  <Font name="Roboto" size="20.0" />
+               </font>
+            </Label>
+            <AnchorPane id="insideanchor" layoutX="26.0" layoutY="44.0" prefHeight="189.0" prefWidth="565.0" styleClass="insideanchor" stylesheets="@Stylesheet.css">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <children>
+                  <DatePicker fx:id="Datepicker" layoutX="40.0" layoutY="110.0" prefHeight="25.0" prefWidth="158.0" promptText="Select Date" />
+                  <Button id="searchbutton" fx:id="Searchbutton" layoutX="390.0" layoutY="107.0" mnemonicParsing="false" onAction="#Searchbuttononaction" prefHeight="31.0" prefWidth="129.0" styleClass="searchbutton" stylesheets="@Stylesheet.css" text="Search" />
+                  <ComboBox id="combobox" fx:id="Departure" editable="true" layoutX="44.0" layoutY="43.0" prefWidth="150.0" promptText="Travelling From" styleClass="combo-box" stylesheets="@Stylesheet.css" />
+                  <ComboBox fx:id="Arival" editable="true" layoutX="390.0" layoutY="44.0" prefWidth="150.0" promptText="Travelling to" />
+                  <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="10.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/locationicon.jpeg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="356.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/locationicon.jpeg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="65.0" fitWidth="158.0" layoutX="228.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Bus.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="57.0" fitWidth="150.0" layoutX="14.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/Bus.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="24.0" layoutY="57.0" text="Route Rider">
+         <font>
+            <Font name="Mistral" size="20.0" />
+         </font>
+      </Label>
+      <Button id="Logout" fx:id="Logoutbutton" layoutX="513.0" layoutY="20.0" mnemonicParsing="false" onAction="#Logouttononaction" style="-fx-background-color: #2270ae;" text="Logout" />
+      <Label id="DisplayMessage" fx:id="DisplayMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="66.0" layoutY="287.0" prefHeight="30.0" prefWidth="475.0" styleClass="DisplayMessage" stylesheets="@Stylesheet.css" textAlignment="CENTER" textFill="#884545">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Label>
+      <TableView fx:id="Bustable" layoutX="3.0" layoutY="352.0" prefHeight="200.0" prefWidth="599.0">
+        <columns>
+          <TableColumn fx:id="Busname" prefWidth="111.0" text="Bus name" />
+          <TableColumn fx:id="Departutetime" editable="false" prefWidth="93.0" text="Departute time" />
+            <TableColumn fx:id="Arrivaltime" prefWidth="93.0" text="Arrival time" />
+            <TableColumn fx:id="economyprice" prefWidth="93.0" text="Economy price" />
+            <TableColumn fx:id="Buisnessprice" prefWidth="93.0" text="Buisness price" />
+            <TableColumn prefWidth="93.0" text="Available seats" />
+        </columns>
+      </TableView>
+   </children>
 </AnchorPane>
