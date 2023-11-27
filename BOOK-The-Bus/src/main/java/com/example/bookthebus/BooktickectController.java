@@ -21,7 +21,9 @@ public class BooktickectController {
     private Label SeatsMessage;
 
     public static String busID;
+    public static String passengeremail;
     PessengerMenuController a=new PessengerMenuController();
+    BusManagement b=new BusManagement();
 
 
     @FXML
@@ -46,6 +48,7 @@ public class BooktickectController {
             seatButton.setOnAction(e -> {
 
                 if (!seat.getReserved()) {
+                    b.bookTicket(seat.getSeatID(), passengeremail, busID);
                     seat.setReserved(true);
                     SeatsMessage.setText("Seat " + seat.getSeatID() + " is Successfully Booked.");
                     seatButton.setStyle("-fx-background-color: red;");
@@ -60,6 +63,14 @@ public class BooktickectController {
             seatGrid.setVgap(10);
             seatGrid.setHgap(10);
         }
+    }
+
+    public void backbuttononaction(ActionEvent e) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("PassengerDashboard.fxml"));
+        Scene scene = new Scene(root);
+        Stage window = (Stage)((Node)e.getSource()).getScene().getWindow();
+        window.setScene(scene);
+        window.show();
     }
 
 

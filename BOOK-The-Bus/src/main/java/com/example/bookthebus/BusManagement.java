@@ -16,6 +16,7 @@ public class BusManagement {
     public static ArrayList<Discounts> discounts = new ArrayList<>();
     public static ArrayList<BusStaff> busStaff = new ArrayList<>();
     public static ArrayList<Seat> seats=new ArrayList<>();
+    public static ObservableList<Bus> Availablebuses = FXCollections.observableArrayList();
     public int bookingcounter=0;
 
 
@@ -212,14 +213,14 @@ public void showStaffDuties(String staffID){
     }
 
 
-    public void bookTicket(int SeatId, String passengerID, String BusId) {
+    public void bookTicket(int SeatId, String passengeremail, String BusId) {
         for (int i = 0; i < buses.size(); i++) {
             if (buses.get(i).getId().equals(BusId)) {
                 for (int j = 0; j < 8; j++)
                     for (int k = 0; k < 4; k++)
                         if (buses.get(i).getSeats()[j][k].getSeatID() == SeatId && !buses.get(i).getSeats()[j][k].getReserved()) {
                             for (int l = 0; l < passengers.size(); l++) {
-                                if (passengers.get(l).getId().equals(passengerID)) {
+                                if (passengers.get(l).getAccount().getEmailAddress().equals(passengeremail)) {
                                     passengers.get(l).Bookedseats.add(BusManagement.buses.get(i).getSeats()[j][k]);
                                     buses.get(i).getSeats()[j][k].setReserved(true);
                                     buses.get(i).getSeats()[j][k].setBookingID(bookingcounter++);
@@ -234,14 +235,14 @@ public void showStaffDuties(String staffID){
         }
     }
 
-    public void bookTicket(int SeatId, String passengerID, String BusId,String Discountcode) {
+    public void bookTicket(int SeatId, String passengeremail, String BusId,String Discountcode) {
         for (int i = 0; i < buses.size(); i++) {
             if (buses.get(i).getId().equals(BusId)) {
                 for (int j = 0; j < 8; j++)
                     for (int k = 0; k < 4; k++)
                         if (buses.get(i).getSeats()[j][k].getSeatID() == SeatId && !buses.get(i).getSeats()[j][k].getReserved()) {
                             for (int l = 0; l < passengers.size(); l++) {
-                                if (passengers.get(l).getId().equals(passengerID)) {
+                                if (passengers.get(l).getAccount().getEmailAddress().equals(passengeremail)) {
                                     passengers.get(l).Bookedseats.add(BusManagement.buses.get(i).getSeats()[j][k]);
                                     buses.get(i).getSeats()[j][k].setReserved(true);
                                     buses.get(i).getSeats()[j][k].setBookingID(bookingcounter++);
@@ -264,14 +265,14 @@ public void showStaffDuties(String staffID){
 
         }
     }
-    public void CancelTicket(String pessengerID, int SeatID, String BusName) {
+    public void CancelTicket(String pessengeremail, int SeatID, String BusName) {
         for (int i = 0; i < buses.size(); i++) {
             if (buses.get(i).getName().equals(BusName)) {
                 for (int j = 0; j < 8; j++)
                     for (int k = 0; k < 4; k++)
                         if (buses.get(i).getSeats()[j][k].getSeatID() == SeatID && buses.get(i).getSeats()[j][k].getReserved()) {
                             for (int l = 0; l < passengers.size(); l++) {
-                                if (passengers.get(l).getId().equals(pessengerID)) {
+                                if (passengers.get(l).getAccount().getEmailAddress().equals(pessengeremail)) {
                                     passengers.get(l).removeBookedSeat(buses.get(i).getSeats()[j][k]);
                                     buses.get(i).getSeats()[j][k].setReserved(false);
                                     buses.get(i).setAvailableSeats(buses.get(i).getAvailableSeats()+1);
@@ -292,14 +293,17 @@ public void showStaffDuties(String staffID){
             }
         }
     }
-    public static Bus showAvailableBuses(String Departure, String Arrival,String Date) {
+    public static void showAvailableBuses(String Departure, String Arrival,String Date) {
+        Availablebuses.clear();
         for (int i = 0; i < buses.size(); i++) {
             if (buses.get(i).getDepartureTerminal().toString().equals(Departure) && buses.get(i).getArrivalTerminal().toString().equals(Arrival) && buses.get(i).getDate().equals(Date)) {
-                System.out.println(buses.get(i));
-                return buses.get(i);
+                if (!Availablebuses.contains(buses.get(i))){
+                    Availablebuses.add(buses.get(i));
+                    System.out.println(buses.get(i));
+                }
             }
         }
-   return null; }
+    }
     public void showAvailableBuses(String Departure, String Arrival,String Date,String DepartureTime) {
         for (int i = 0; i < buses.size(); i++) {
             if (buses.get(i).getDepartureTerminal().toString().equals(Departure) && buses.get(i).getArrivalTerminal().toString().equals(Arrival) && buses.get(i).getDate().equals(Date) && buses.get(i).getDepartureTime().equals(DepartureTime)) {
@@ -316,12 +320,12 @@ public void showStaffDuties(String staffID){
                     buses.set(j+1,temp);
                 }
     }
-    public void showTicketDetails(String passengerID) {
+    public void showTicketDetails(String passengeremail) {
        for (int i=0;i<buses.size();i++)
               for (int j=0;j<8;j++)
                 for (int k=0;k<4;k++)
                      for (int l=0;l<passengers.size();l++)
-                          if (passengers.get(l).getId().equals(passengerID) )
+                          if (passengers.get(l).getAccount().getEmailAddress().equals(passengeremail) )
                             if(passengers.get(l).Bookedseats.contains(buses.get(i).getSeats()[j][k])){
                                 System.out.println(passengers.get(l));
                                 System.out.println(buses.get(i));

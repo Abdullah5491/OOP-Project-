@@ -38,10 +38,7 @@ public class LoginController {
     }
 
     BusManagement M1 = new BusManagement();
-    Passenger p1=new Passenger("Ali","3640107967411","Male","ali","03246882133","123456");
-    {
-        BusManagement.addPassenger(p1);
-    }
+
     {
         try {
             Scanner scanner = new Scanner(new File("Passengers.txt"));
@@ -55,7 +52,7 @@ public class LoginController {
 
                 Passenger passenger = new Passenger(name, id, gender, emailAddress, contactNumber, password);
 
-                BusManagement.passengers.add(passenger);
+                BusManagement.addPassenger(passenger);
             }
             scanner.close();
         } catch (IOException e) {
@@ -90,6 +87,7 @@ public class LoginController {
 
 
 
+
     public void loginbuttononaction(ActionEvent e) throws IOException {
         if (Username.getText().isBlank() && Password.getText().isBlank()) {
             Displaymessage.setText("Please Enter Username and Password");
@@ -118,6 +116,8 @@ public class LoginController {
         }else {
             for (int i = 0; i < BusManagement.passengers.size(); i++) {
                 if (BusManagement.passengers.get(i).getAccount().getEmailAddress().equals(Username.getText()) && !BusManagement.passengers.get(i).getAccount().getEmailAddress().isEmpty() && !BusManagement.passengers.get(i).getAccount().getPassword().isEmpty() && BusManagement.passengers.get(i).getAccount().getPassword().equals(Password.getText())) {
+                    BooktickectController.passengeremail=Username.getText();
+                    System.out.println(BooktickectController.passengeremail);
                     Displaymessage.setText("Login Successful");
                     try {
                         Node source = (Node) e.getSource();

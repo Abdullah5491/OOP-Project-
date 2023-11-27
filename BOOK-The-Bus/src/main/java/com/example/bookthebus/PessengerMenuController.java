@@ -95,7 +95,7 @@ public class PessengerMenuController {
                 Buisnessprice.setCellValueFactory(new PropertyValueFactory<>("LuxuryPrice"));
                 AvailableSeats.setCellValueFactory(new PropertyValueFactory<>("AvailableSeats"));
                 BusID.setCellValueFactory(new PropertyValueFactory<>("Id"));
-                Bustable.setItems(BusManagement.buses);
+                Bustable.setItems(BusManagement.Availablebuses);
             Bustable.setOnMouseClicked((MouseEvent event) -> {
                 if (event.getClickCount() == 2 && (!Bustable.getSelectionModel().isEmpty())) {
                     Bus selectedBus = Bustable.getSelectionModel().getSelectedItem();
