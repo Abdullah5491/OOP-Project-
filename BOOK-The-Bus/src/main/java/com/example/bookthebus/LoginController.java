@@ -18,6 +18,25 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class LoginController {
+    public String ManagerUsername = "abdullah@gmail.com";
+    public String ManagerPassword="12345678";
+
+    public String getManagerUsername() {
+        return ManagerUsername;
+    }
+
+    public void setManagerUsername(String managerUsername) {
+        ManagerUsername = managerUsername;
+    }
+
+    public String getManagerPassword() {
+        return ManagerPassword;
+    }
+
+    public void setManagerPassword(String managerPassword) {
+        ManagerPassword = managerPassword;
+    }
+
     BusManagement M1 = new BusManagement();
     Passenger p1=new Passenger("Ali","3640107967411","Male","ali","03246882133","123456");
     {
@@ -78,7 +97,25 @@ public class LoginController {
             Displaymessage.setText("Please Enter Username");
         } else if (Password.getText().isBlank()) {
             Displaymessage.setText("Please Enter Password");
-        } else {
+        } else if(Username.getText().equals(ManagerUsername) && Password.getText().equals(ManagerPassword)){
+            Displaymessage.setText("Login Successful");
+            try {
+                Node source = (Node) e.getSource();
+                Scene scene = source.getScene();
+                if (scene != null) {
+                    Window window = scene.getWindow();
+                    if (window instanceof Stage) {
+                        Stage stage = (Stage) window;
+                        Parent root = FXMLLoader.load(getClass().getResource("ManagerDashboard.fxml"));
+                        stage.setScene(new Scene(root));
+                        stage.show();
+                    }
+                }
+            }catch (IOException ignored) {
+
+            }
+
+        }else {
             for (int i = 0; i < BusManagement.passengers.size(); i++) {
                 if (BusManagement.passengers.get(i).getAccount().getEmailAddress().equals(Username.getText()) && !BusManagement.passengers.get(i).getAccount().getEmailAddress().isEmpty() && !BusManagement.passengers.get(i).getAccount().getPassword().isEmpty() && BusManagement.passengers.get(i).getAccount().getPassword().equals(Password.getText())) {
                     Displaymessage.setText("Login Successful");
@@ -100,6 +137,7 @@ public class LoginController {
                 }
 
                 else {
+
                     Displaymessage.setText("Invalid Username or Password");
                 }
 

@@ -11,28 +11,29 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.busmanagementsystem.HelloController">
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bookthebus.ManagerDashboardController">
    <children>
       <AnchorPane prefHeight="200.0" prefWidth="200.0">
          <children>
             <BorderPane layoutX="49.0" layoutY="71.0" prefHeight="600.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <top>
-                  <AnchorPane prefHeight="59.0" prefWidth="1100.0" styleClass="semi-top-form" stylesheets="@dashBoard.css" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="0.0" prefWidth="1100.0" styleClass="semi-top-form" stylesheets="@dashBoard.css" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane layoutX="-31.0" layoutY="-80.0" prefHeight="43.0" prefWidth="1100.0" styleClass="top-form" stylesheets="@dashBoard.css" AnchorPane.bottomAnchor="16.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane layoutY="-64.0" prefHeight="125.0" prefWidth="1097.0" styleClass="top-form" stylesheets="@dashBoard.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="4.0" AnchorPane.topAnchor="-64.0">
                            <children>
-                              <Label layoutX="14.0" layoutY="13.0" text="Bus Ticket Booking System" textFill="WHITE">
-                                 <font>
-                                    <Font size="16.0" />
-                                 </font>
-                              </Label>
+                              <ImageView fitHeight="59.0" fitWidth="97.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@images/RouteRider.png" />
+                                 </image>
+                              </ImageView>
                            </children>
                         </AnchorPane>
                      </children>
@@ -52,8 +53,8 @@
                            </font>
                         </Label>
                         <Line endX="100.0" layoutX="123.0" layoutY="113.0" startX="-100.0" stroke="WHITE" />
-                        <Button fx:id="Dashboard" layoutX="38.0" layoutY="139.0" maxHeight="35.0" maxWidth="170.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="170.0" styleClass="nav-btn" stylesheets="@dashBoard.css" text="Dashboard" textFill="#ffffffa1" />
-                        <Button fx:id="available_buses" layoutX="38.0" layoutY="174.0" maxHeight="35.0" maxWidth="170.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="170.0" styleClass="nav-btn" stylesheets="@dashBoard.css" text="Available Buses" textFill="#ffffffa1" />
+                        <Button fx:id="Dashboard" layoutX="38.0" layoutY="139.0" maxHeight="35.0" maxWidth="170.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="170.0" styleClass="nav-btn" stylesheets="@Stylesheet.css" text="Dashboard" textFill="#ffffffa1" />
+                        <Button fx:id="available_buses" layoutX="38.0" layoutY="174.0" maxHeight="35.0" maxWidth="170.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="170.0" styleClass="nav-btn" stylesheets="@dashBoard.cs" text="Available Buses" textFill="#ffffffa1" />
                         <Button fx:id="ticket_booking" layoutX="38.0" layoutY="209.0" maxHeight="35.0" maxWidth="170.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="170.0" styleClass="nav-btn" stylesheets="@dashBoard.css" text="Booking Tickets" textFill="#ffffffa1" />
                         <Button fx:id="customers" layoutX="38.0" layoutY="252.0" maxHeight="35.0" maxWidth="170.0" mnemonicParsing="false" onAction="#switchForm" prefHeight="35.0" prefWidth="170.0" styleClass="nav-btn" stylesheets="@dashBoard.css" text="Customers" textFill="#ffffffa1" />
                         <Button fx:id="signout_btn" layoutX="14.0" layoutY="491.0" maxHeight="35.0" maxWidth="170.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="69.0" styleClass="logout-btn" stylesheets="@dashBoard.css" text="Signout" textFill="#ffffffa1" />
@@ -145,7 +146,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="available_buses_form" layoutX="141.0" layoutY="70.0" prefHeight="540.6666666666666" prefWidth="854.6666666666666" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane fx:id="available_buses_form" layoutX="141.0" layoutY="70.0" prefHeight="540.6666666666666" prefWidth="854.6666666666666" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <children>
                               <AnchorPane layoutX="14.0" layoutY="14.0" prefHeight="517.0" prefWidth="274.0" stylesheets="@dashBoard.css">
                                  <styleClass>
@@ -218,7 +219,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="booking_tickets_1" layoutX="18.0" layoutY="12.0" prefHeight="225.0" prefWidth="826.0" stylesheets="@dashBoard.css">
+                        <AnchorPane fx:id="booking_tickets_1" layoutX="18.0" layoutY="12.0" prefHeight="225.0" prefWidth="826.0" stylesheets="@dashBoard.css" visible="false">
                            <styleClass>
                               <String fx:value="white-bg" />
                               <String fx:value="shadow" />
@@ -291,7 +292,7 @@
                               </AnchorPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="booking_tickets_2" layoutX="18.0" layoutY="246.0" prefHeight="287.0" prefWidth="826.0" stylesheets="@dashBoard.css">
+                        <AnchorPane fx:id="booking_tickets_2" layoutX="18.0" layoutY="246.0" prefHeight="287.0" prefWidth="826.0" stylesheets="@dashBoard.css" visible="false">
                            <styleClass>
                               <String fx:value="white-bg" />
                               <String fx:value="shadow" />
@@ -364,7 +365,7 @@
                               <Button fx:id="receipt" layoutX="611.0" layoutY="238.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="88.0" styleClass="receipt-btn" stylesheets="@dashBoard.css" text="Receipt" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane fx:id="customers_form" layoutX="14.0" layoutY="37.0" prefHeight="490.0" prefWidth="824.0">
+                        <AnchorPane fx:id="customers_form" layoutX="14.0" layoutY="37.0" prefHeight="490.0" prefWidth="824.0" visible="false">
                            <children>
                               <TableView layoutX="25.0" layoutY="32.0" prefHeight="444.0" prefWidth="785.0" stylesheets="@dashBoard.css" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="14.333333333333371" AnchorPane.topAnchor="32.0">
                                 <columns>
