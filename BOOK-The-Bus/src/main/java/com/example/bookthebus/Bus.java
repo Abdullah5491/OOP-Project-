@@ -22,11 +22,11 @@ public class Bus {
     private double OtherExpenses;
     private double TotalExpense;
     private double TotalProfit;
-    private String DepartureDate;
+//    private String DepartureDate;
     private int AvailableSeats=32;
 
 
-    public Bus(String name, String id, String departureTime, String arrivalTime, String Date, Terminals departureTerminal, Terminals arrivalTerminal, BusCategory category, String departureDate) {
+    public Bus(String name, String id, String departureTime, String arrivalTime, String Date, Terminals departureTerminal, Terminals arrivalTerminal, BusCategory category) {
         this.name = name;
         Id = id;
         DepartureTime = departureTime;
@@ -35,7 +35,6 @@ public class Bus {
         ArrivalTerminal = arrivalTerminal;
         this.Date = Date;
         this.category = category;
-        this.DepartureDate = departureDate;
     }
     public void calculateTotalSales(){
         double sum=0;
@@ -64,14 +63,6 @@ public class Bus {
 
     public void setOtherExpenses(double otherExpenses) {
         OtherExpenses = otherExpenses;
-    }
-
-    public String getDepartureDate() {
-        return DepartureDate;
-    }
-
-    public void setDepartureDate(String departureDate) {
-        DepartureDate = departureDate;
     }
 
     public double getTotalProfit() {
@@ -259,6 +250,7 @@ public class Bus {
             }
         }
     }
+
 
 
     @Override

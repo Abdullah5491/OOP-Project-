@@ -3,8 +3,8 @@ package com.example.bookthebus;
 public class PremiumBus extends Bus{
     private Seat [][] Seats=new Seat[8][4];
 
-    public PremiumBus(String name, String id, String departureTime, String arrivalTime, String Date, Terminals departureTerminal, Terminals arrivalTerminal, BusCategory category, String departureDate) {
-        super(name, id, departureTime, arrivalTime, Date, departureTerminal, arrivalTerminal, category, departureDate);
+    public PremiumBus(String name, String id, String departureTime, String arrivalTime, String Date, Terminals departureTerminal, Terminals arrivalTerminal, BusCategory category) {
+        super(name, id, departureTime, arrivalTime, Date, departureTerminal, arrivalTerminal, category);
     }
 
 
