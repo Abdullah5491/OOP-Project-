@@ -11,7 +11,7 @@
     -fx-border-width:0px .4px .8px .4px;
 }
 .nav-form{
-    -fx-background-color:linear-gradient(to bottom right, #804d00, #d2d227);
+    -fx-background-color:linear-gradient(to bottom right, #804d00, #bd7b1d);
 }
 .text-color{
     -fx-text-fill:#fff;

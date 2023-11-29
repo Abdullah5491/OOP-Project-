@@ -107,6 +107,7 @@ public class LoginController {
                         Parent root = FXMLLoader.load(getClass().getResource("ManagerDashboard.fxml"));
                         stage.setScene(new Scene(root));
                         stage.show();
+
                     }
                 }
             }catch (IOException ignored) {
@@ -119,6 +120,8 @@ public class LoginController {
                     BooktickectController.passengeremail=Username.getText();
                     System.out.println(BooktickectController.passengeremail);
                     Displaymessage.setText("Login Successful");
+                    PessengerMenuController.pname=BusManagement.passengers.get(i).getName();
+
                     try {
                         Node source = (Node) e.getSource();
                         Scene scene = source.getScene();
@@ -145,8 +148,6 @@ public class LoginController {
             }
         }
     }
-
-
     public void signupbuttononaction(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("Register.fxml"));
         Scene scene = new Scene(root);

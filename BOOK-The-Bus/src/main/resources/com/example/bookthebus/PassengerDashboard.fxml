@@ -6,6 +6,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
@@ -13,119 +14,152 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="688.0" prefWidth="1007.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bookthebus.PessengerMenuController">
+<AnchorPane prefHeight="697.0" prefWidth="1010.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.bookthebus.PessengerMenuController">
    <children>
-      <AnchorPane layoutX="337.0" layoutY="98.0" prefHeight="377.0" prefWidth="658.0">
-         <children>
-            <Label alignment="CENTER" layoutX="232.0" layoutY="24.0" prefHeight="34.0" prefWidth="167.0" text="Cancel Ticket" textAlignment="CENTER" textFill="#8b2424">
-               <font>
-                  <Font name="Calisto MT Italic" size="23.0" />
-               </font>
-            </Label>
-            <TableView fx:id="Bustable1" layoutX="3.0" layoutY="67.0" prefHeight="332.0" prefWidth="659.0" stylesheets="@dashBoard.css">
-               <columns>
-                  <TableColumn fx:id="BUSNAME" prefWidth="111.0" text="Bus name" />
-                  <TableColumn fx:id="TicketNO" editable="false" prefWidth="93.0" text="Ticket no" />
-                  <TableColumn fx:id="DepartureCity" prefWidth="93.0" text="Departute City" />
-                  <TableColumn fx:id="ArrivalCity" prefWidth="93.0" text="Arrival City" />
-                  <TableColumn fx:id="TicketPrice" prefWidth="93.0" text="Ticket Price" />
-                  <TableColumn fx:id="SeatID" prefWidth="93.0" text="Seat number" />
-                  <TableColumn fx:id="BUSID" text="ID" />
-               </columns>
-            </TableView>
-         </children>
-      </AnchorPane>
-      <AnchorPane layoutX="335.0" layoutY="93.0" prefHeight="601.0" prefWidth="670.0" visible="false">
-         <children>
-            <AnchorPane prefHeight="258.0" prefWidth="658.0" style="-fx-background-color: #2270ae;">
+      <ScrollPane prefHeight="713.0" prefWidth="1008.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="717.0" prefWidth="1012.0">
                <children>
-                  <Label id="bus" layoutX="47.0" layoutY="14.0" styleClass="bus" stylesheets="@Stylesheet.css" text="Bus Booking Tickets" textFill="WHITE">
-                     <font>
-                        <Font name="Roboto" size="20.0" />
-                     </font>
-                  </Label>
-                  <AnchorPane id="insideanchor" layoutX="38.0" layoutY="54.0" prefHeight="189.0" prefWidth="565.0" styleClass="insideanchor" stylesheets="@Stylesheet.css">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <cursor>
-                        <Cursor fx:constant="DEFAULT" />
-                     </cursor>
+                  <AnchorPane fx:id="viewtickets" layoutX="333.0" layoutY="134.0" prefHeight="377.0" prefWidth="658.0" visible="false">
                      <children>
-                        <DatePicker fx:id="Datepicker" layoutX="40.0" layoutY="110.0" prefHeight="25.0" prefWidth="158.0" promptText="Select Date" />
-                        <Button id="searchbutton" fx:id="Searchbutton" layoutX="390.0" layoutY="107.0" mnemonicParsing="false" onAction="#Searchbuttononaction" prefHeight="31.0" prefWidth="129.0" styleClass="searchbutton" stylesheets="@Stylesheet.css" text="Search" />
-                        <ComboBox id="combobox" fx:id="Departure" editable="true" layoutX="44.0" layoutY="43.0" prefWidth="150.0" promptText="Travelling From" styleClass="combo-box" stylesheets="@Stylesheet.css" />
-                        <ComboBox fx:id="Arival" editable="true" layoutX="390.0" layoutY="44.0" prefWidth="150.0" promptText="Travelling to" />
-                        <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="10.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/locationicon.jpeg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="356.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/locationicon.jpeg" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="65.0" fitWidth="158.0" layoutX="228.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@images/Bus.png" />
-                           </image>
-                        </ImageView>
-                        <Label id="DisplayMessage" fx:id="DisplayMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="55.0" layoutY="143.0" prefHeight="30.0" prefWidth="475.0" styleClass="DisplayMessage" stylesheets="@Stylesheet.css" textAlignment="CENTER" textFill="#884545">
+                        <Label alignment="CENTER" layoutX="232.0" layoutY="24.0" prefHeight="34.0" prefWidth="167.0" text="Your Tickets" textAlignment="CENTER" textFill="#8b2424">
                            <font>
-                              <Font size="20.0" />
+                              <Font name="Calisto MT Italic" size="23.0" />
                            </font>
                         </Label>
-                        <AnchorPane layoutX="-50.0" layoutY="-65.0" prefHeight="0.0" prefWidth="34.0" />
+                        <TableView fx:id="ticketsTable" layoutX="-13.0" layoutY="75.0" prefHeight="332.0" prefWidth="659.0" stylesheets="@dashBoard.css">
+                           <columns>
+                              <TableColumn fx:id="BUSNAME1" prefWidth="111.0" text="Bus name" />
+                              <TableColumn fx:id="TicketNO1" editable="false" prefWidth="93.0" text="Ticket no" />
+                              <TableColumn fx:id="DepartureCity1" prefWidth="93.0" text="Departute City" />
+                              <TableColumn fx:id="ArrivalCity1" prefWidth="93.0" text="Arrival City" />
+                              <TableColumn fx:id="TicketPrice1" prefWidth="93.0" text="Ticket Price" />
+                              <TableColumn fx:id="SeatID1" prefWidth="93.0" text="Seat number" />
+                              <TableColumn fx:id="BUSID1" text="ID" />
+                           </columns>
+                        </TableView>
                      </children>
                   </AnchorPane>
+                  <AnchorPane fx:id="bookticket" layoutX="309.0" layoutY="75.0" prefHeight="587.0" prefWidth="670.0">
+                     <children>
+                        <AnchorPane prefHeight="258.0" prefWidth="668.0" style="-fx-background-color: #2270ae;">
+                           <children>
+                              <Label id="bus" layoutX="47.0" layoutY="14.0" styleClass="bus" stylesheets="@Stylesheet.css" text="Bus Booking Tickets" textFill="WHITE">
+                                 <font>
+                                    <Font name="Roboto" size="20.0" />
+                                 </font>
+                              </Label>
+                              <AnchorPane id="insideanchor" layoutX="38.0" layoutY="54.0" prefHeight="189.0" prefWidth="565.0" styleClass="insideanchor" stylesheets="@Stylesheet.css">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <cursor>
+                                    <Cursor fx:constant="DEFAULT" />
+                                 </cursor>
+                                 <children>
+                                    <DatePicker fx:id="Datepicker" layoutX="40.0" layoutY="110.0" prefHeight="25.0" prefWidth="158.0" promptText="Select Date" />
+                                    <Button id="searchbutton" fx:id="Searchbutton" layoutX="390.0" layoutY="107.0" mnemonicParsing="false" onAction="#Searchbuttononaction" prefHeight="31.0" prefWidth="129.0" styleClass="searchbutton" stylesheets="@Stylesheet.css" text="Search" />
+                                    <ComboBox id="combobox" fx:id="Departure" editable="true" layoutX="44.0" layoutY="43.0" prefWidth="150.0" promptText="Travelling From" styleClass="combo-box" stylesheets="@Stylesheet.css" />
+                                    <ComboBox fx:id="Arival" editable="true" layoutX="390.0" layoutY="44.0" prefWidth="150.0" promptText="Travelling to" />
+                                    <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="10.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/locationicon.jpeg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="38.0" fitWidth="34.0" layoutX="356.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/locationicon.jpeg" />
+                                       </image>
+                                    </ImageView>
+                                    <ImageView fitHeight="65.0" fitWidth="158.0" layoutX="228.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@images/Bus.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label id="DisplayMessage" fx:id="DisplayMessage" alignment="CENTER" contentDisplay="CENTER" layoutX="55.0" layoutY="143.0" prefHeight="30.0" prefWidth="475.0" styleClass="DisplayMessage" stylesheets="@Stylesheet.css" textAlignment="CENTER" textFill="#884545">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Label>
+                                    <AnchorPane layoutX="-50.0" layoutY="-65.0" prefHeight="0.0" prefWidth="34.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                        <TableView fx:id="Bustable" layoutY="270.0" prefHeight="291.0" prefWidth="667.0" stylesheets="@dashBoard.css">
+                          <columns>
+                            <TableColumn fx:id="Busname" editable="false" prefWidth="111.0" text="Bus name" />
+                            <TableColumn fx:id="Departutetime" editable="false" prefWidth="93.0" text="Departute time" />
+                              <TableColumn fx:id="Arrivaltime" editable="false" prefWidth="93.0" text="Arrival time" />
+                              <TableColumn fx:id="economyprice" editable="false" prefWidth="93.0" text="Economy price" />
+                              <TableColumn fx:id="Buisnessprice" editable="false" prefWidth="93.0" text="Buisness price" />
+                              <TableColumn fx:id="AvailableSeats" editable="false" prefWidth="93.0" text="Available seats" />
+                              <TableColumn fx:id="BusID" editable="false" minWidth="0.0" prefWidth="87.33327229817712" text="ID" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutY="75.0" prefHeight="562.0" prefWidth="292.0" style="-fx-background-radius: 10px;" styleClass="nav-form" stylesheets="@dashBoard.css">
+                     <children>
+                        <ImageView fitHeight="113.0" fitWidth="127.0" layoutX="90.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/Usericon.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="96.0" layoutY="142.0" text="Welcome" textFill="WHITE">
+                           <font>
+                              <Font name="Tahoma" size="27.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="Passengername" alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="186.0" prefHeight="31.0" prefWidth="235.0" text="Passengar Name">
+                           <font>
+                              <Font name="Calisto MT Bold Italic" size="21.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="bookingbutton" alignment="CENTER" contentDisplay="CENTER" layoutX="85.0" layoutY="260.0" mnemonicParsing="false" onAction="#bookticket" prefHeight="31.0" prefWidth="129.0" style="-fx-background-radius: 5px; -fx-background-color: green;" styleClass="nav-btn" stylesheets="@Stylesheet.css" text="Book Ticket" textAlignment="CENTER" />
+                        <Button fx:id="cancelticketbutton" layoutX="86.0" layoutY="300.0" mnemonicParsing="false" onAction="#cancelticket" prefHeight="32.0" prefWidth="129.0" style="-fx-background-radius: 5px;" styleClass="nav-btn" stylesheets="@Stylesheet.css" text="Cancel Ticket" />
+                        <Button fx:id="viewticketsbutton" layoutX="86.0" layoutY="339.0" mnemonicParsing="false" onAction="#viewtickets" prefHeight="32.0" prefWidth="129.0" style="-fx-background-radius: 5px;" styleClass="nav-btn" stylesheets="@Stylesheet.css" text="View Tickets" />
+                        <Label alignment="CENTER" layoutX="47.0" layoutY="527.0" prefHeight="29.0" prefWidth="200.0" text="Route Rider © 2023 All Rights Reserved." textFill="WHITE">
+                           <font>
+                              <Font name="Tw Cen MT Italic" size="11.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="cancelticket" layoutX="313.0" layoutY="118.0" prefHeight="377.0" prefWidth="658.0" visible="false">
+                     <children>
+                        <Label alignment="CENTER" layoutX="232.0" layoutY="24.0" prefHeight="34.0" prefWidth="167.0" text="Cancel Ticket" textAlignment="CENTER" textFill="#8b2424">
+                           <font>
+                              <Font name="Calisto MT Italic" size="23.0" />
+                           </font>
+                        </Label>
+                        <TableView fx:id="CancelTicket" layoutX="3.0" layoutY="67.0" prefHeight="332.0" prefWidth="659.0" stylesheets="@dashBoard.css">
+                           <columns>
+                              <TableColumn fx:id="BUSNAME" prefWidth="111.0" text="Bus name" />
+                              <TableColumn fx:id="TicketNO" editable="false" prefWidth="93.0" text="Ticket no" />
+                              <TableColumn fx:id="DepartureCity" prefWidth="93.0" text="Departute City" />
+                              <TableColumn fx:id="ArrivalCity" prefWidth="93.0" text="Arrival City" />
+                              <TableColumn fx:id="TicketPrice" prefWidth="93.0" text="Ticket Price" />
+                              <TableColumn fx:id="SeatID" prefWidth="93.0" text="Seat number" />
+                              <TableColumn fx:id="BUSID" text="ID" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="56.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/Bus.png" />
+                     </image>
+                  </ImageView>
+                  <Button id="Logout" fx:id="Logoutbutton" layoutX="901.0" layoutY="29.0" mnemonicParsing="false" onAction="#Logouttononaction" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: #2270ae;" text="Logout" />
+                  <Label layoutX="10.0" layoutY="48.0" text="Route Rider">
+                     <font>
+                        <Font name="Mistral" size="20.0" />
+                     </font>
+                  </Label>
                </children>
             </AnchorPane>
-            <TableView fx:id="Bustable" layoutY="270.0" prefHeight="315.0" prefWidth="659.0" stylesheets="@dashBoard.css">
-              <columns>
-                <TableColumn fx:id="Busname" prefWidth="111.0" text="Bus name" />
-                <TableColumn fx:id="Departutetime" editable="false" prefWidth="93.0" text="Departute time" />
-                  <TableColumn fx:id="Arrivaltime" prefWidth="93.0" text="Arrival time" />
-                  <TableColumn fx:id="economyprice" prefWidth="93.0" text="Economy price" />
-                  <TableColumn fx:id="Buisnessprice" prefWidth="93.0" text="Buisness price" />
-                  <TableColumn fx:id="AvailableSeats" prefWidth="93.0" text="Available seats" />
-                  <TableColumn fx:id="BusID" text="ID" />
-              </columns>
-            </TableView>
-         </children>
-      </AnchorPane>
-      <ImageView fitHeight="57.0" fitWidth="150.0" layoutX="13.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/Bus.png" />
-         </image>
-      </ImageView>
-      <Button id="Logout" fx:id="Logoutbutton" layoutX="911.0" layoutY="26.0" mnemonicParsing="false" onAction="#Logouttononaction" style="-fx-background-color: #2270ae;" text="Logout" />
-      <Label layoutX="24.0" layoutY="57.0" text="Route Rider">
-         <font>
-            <Font name="Mistral" size="20.0" />
-         </font>
-      </Label>
-      <AnchorPane layoutX="24.0" layoutY="93.0" prefHeight="585.0" prefWidth="299.0" styleClass="nav-form" stylesheets="@dashBoard.css">
-         <children>
-            <ImageView fitHeight="113.0" fitWidth="127.0" layoutX="90.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/Usericon.png" />
-               </image>
-            </ImageView>
-            <Label layoutX="96.0" layoutY="142.0" styleClass="combo-box" stylesheets="@Stylesheet.css" text="Welcome" textFill="WHITE">
-               <font>
-                  <Font name="Tahoma" size="27.0" />
-               </font>
-            </Label>
-            <Label fx:id="Passengername" alignment="CENTER" contentDisplay="CENTER" layoutX="29.0" layoutY="186.0" prefHeight="31.0" prefWidth="235.0" text="Passengar Name">
-               <font>
-                  <Font name="Calisto MT Bold Italic" size="21.0" />
-               </font>
-            </Label>
-            <Button alignment="CENTER" contentDisplay="CENTER" layoutX="85.0" layoutY="260.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="129.0" style="-fx-background-radius: 5px;" styleClass="nav-btn" stylesheets="@Stylesheet.css" text="Book Ticket" textAlignment="CENTER" />
-            <Button layoutX="86.0" layoutY="300.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="129.0" style="-fx-background-radius: 5px;" styleClass="nav-btn" stylesheets="@Stylesheet.css" text="Cancel Ticket" />
-            <Button layoutX="86.0" layoutY="339.0" mnemonicParsing="false" prefHeight="32.0" prefWidth="129.0" style="-fx-background-radius: 5px;" styleClass="nav-btn" stylesheets="@Stylesheet.css" text="View Tickets" />
-         </children>
-      </AnchorPane>
+        </content>
+      </ScrollPane>
    </children>
 </AnchorPane>

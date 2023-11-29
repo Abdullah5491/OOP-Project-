@@ -9,6 +9,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,8 +17,13 @@ import java.io.IOException;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Window;
 
-public class PessengerMenuController {
 
+public class PessengerMenuController {
+    @FXML
+    private AnchorPane bookticket;
+
+    @FXML
+    private AnchorPane cancelticket;
 
     @FXML
     private ComboBox<String> Arival;
@@ -59,6 +65,20 @@ public class PessengerMenuController {
     private TableColumn<Bus, Double> economyprice;
     @FXML
     private TableColumn<Bus, String> BusID;
+    @FXML
+    private AnchorPane viewtickets;
+    @FXML
+    private Button bookingbutton;
+
+    @FXML
+    private Button cancelticketbutton;
+    @FXML
+    private Button viewticketsbutton;
+    @FXML
+    private  Label Passengername;
+    public static String pname;
+
+
 
 
 
@@ -68,6 +88,7 @@ public class PessengerMenuController {
         ObservableList<String> locations = FXCollections.observableArrayList("Lahore", "Islamabad", "Multan", "Karachi");
         Departure.setItems(locations);
         Arival.setItems(locations);
+        Passengername.setText(pname);
 
     }
     {
@@ -112,6 +133,36 @@ public class PessengerMenuController {
 
              }
     }
+    public void bookticket(ActionEvent e){
+        bookticket.setVisible(true);
+        cancelticket.setVisible(false);
+        viewtickets.setVisible(false);
+        bookingbutton.setStyle("-fx-background-color: #15650AFF");
+        cancelticketbutton.setStyle("-fx-background-color: #804D00FF");
+        viewticketsbutton.setStyle("-fx-background-color: #804D00FF");
+
+
+    }
+    public void cancelticket(ActionEvent e){
+        bookticket.setVisible(false);
+        cancelticket.setVisible(true);
+        viewtickets.setVisible(false);
+        cancelticketbutton.setStyle("-fx-background-color: #15650AFF");
+        bookingbutton.setStyle("-fx-background-color: #804D00FF");
+        viewticketsbutton.setStyle("-fx-background-color: #804D00FF");
+
+    }
+    public void viewtickets(ActionEvent e){
+        bookticket.setVisible(false);
+        cancelticket.setVisible(false);
+        viewtickets.setVisible(true);
+        viewticketsbutton.setStyle("-fx-background-color: #15650AFF");
+        bookingbutton.setStyle("-fx-background-color: #804D00FF");
+        cancelticketbutton.setStyle("-fx-background-color: #804D00FF");
+
+
+
+    }
 
     public void Logouttononaction(ActionEvent e) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("LoginPage.fxml"));
@@ -119,6 +170,7 @@ public class PessengerMenuController {
         Stage window = (Stage) ((Node) e.getSource()).getScene().getWindow();
         window.setScene(scene);
         window.show();
+
     }
 
 }
