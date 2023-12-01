@@ -263,7 +263,24 @@ public void showStaffDuties(String staffID){
                         }
             }
 
+
         }
+    }
+    public double Discountedprice(String BusId,int SeatId,String Discountcode){
+        for (int i = 0; i < buses.size(); i++) {
+            if (buses.get(i).getId().equals(BusId)) {
+                for (int j = 0; j < 8; j++)
+                    for (int k = 0; k < 4; k++)
+                        if (buses.get(i).getSeats()[j][k].getSeatID() == SeatId && !buses.get(i).getSeats()[j][k].getReserved()) {
+                            for (int m=0;m<discounts.size();m++){
+                                if (discounts.get(m).getDiscountCode().equals(Discountcode)){
+                                    return buses.get(i).getSeats()[j][k].getSeatPrice()-buses.get(i).getSeats()[j][k].getSeatPrice()*discounts.get(m).getDiscountPercentage();
+                                }
+                            }
+                        }
+            }
+        }
+        return 0;
     }
     public void CancelTicket(String pessengeremail, int SeatID, String BusName) {
         for (int i = 0; i < buses.size(); i++) {
@@ -334,12 +351,14 @@ public void showStaffDuties(String staffID){
 
     }
 
-    public void getBusDetails(String BusId) {
+
+    public static Bus getBusDetails(String BusId) {
         for (int i = 0; i < buses.size(); i++) {
             if (buses.get(i).getId().equals(BusId)) {
-                System.out.println(buses.get(i));
+                return buses.get(i);
             }
         }
+   return null;
     }
     public void PassangerAccountDetails(String passengerID){
         for (int i=0;i<passengers.size();i++)

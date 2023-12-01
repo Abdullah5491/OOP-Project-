@@ -8,9 +8,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.scene.layout.AnchorPane;
 
 import java.io.IOException;
 
@@ -20,8 +22,63 @@ public class BooktickectController {
     @FXML
     private Label SeatsMessage;
 
+    @FXML
+    private Button Applycode;
+
+    @FXML
+    private Button Back;
+
+    @FXML
+    private Label Busname;
+
+    @FXML
+    private Label Cityfrom;
+
+    @FXML
+    private Label Cityto;
+
+    @FXML
+    private Label Date;
+
+    @FXML
+    private TextField Discountcode;
+
+    @FXML
+    private Label PassengerID;
+
+    @FXML
+    private Label Passengername;
+
+    @FXML
+    private AnchorPane TicketDetails;
+
+    @FXML
+    private Label TotalDiscount;
+
+    @FXML
+    private Label TotalPrice;
+
+    @FXML
+    private Button cancel;
+
+    @FXML
+    private Button confirm;
+
+    @FXML
+    private Label seatcategory;
+
+    @FXML
+    private Label seatnumber;
+    @FXML
+    private AnchorPane seatbooking;
+    @FXML
+    private Label seatprice;
+    private String DCode;
+
     public static String busID;
     public static String passengeremail;
+    public static String passengername;
+    public static String passengerid;
     PessengerMenuController a=new PessengerMenuController();
     BusManagement b=new BusManagement();
 
@@ -31,6 +88,7 @@ public class BooktickectController {
         BusManagement.getSeats(busID);
         System.out.println(busID);
         System.out.println("Seats: " + BusManagement.seats.size());
+        Bus bus = BusManagement.getBusDetails(busID);
 
 
 
@@ -48,10 +106,42 @@ public class BooktickectController {
             seatButton.setOnAction(e -> {
 
                 if (!seat.getReserved()) {
-                    b.bookTicket(seat.getSeatID(), passengeremail, busID);
-                    seat.setReserved(true);
-                    SeatsMessage.setText("Seat " + seat.getSeatID() + " is Successfully Booked.");
-                    seatButton.setStyle("-fx-background-color: red;");
+                    {
+                        Passengername.setText(passengername);
+                        PassengerID.setText(passengerid);
+                        TicketDetails.setVisible(true);
+                        seatbooking.setVisible(false);
+                        assert bus != null;
+                        Busname.setText(bus.getName());
+                        Cityfrom.setText(bus.getDepartureTerminal().toString());
+                        Cityto.setText(bus.getArrivalTerminal().toString());
+                        Date.setText(bus.getDate());
+                        seatnumber.setText(String.valueOf(seat.getSeatID()));
+                        seatcategory.setText(seat.getCategory());
+                        DCode = Discountcode.getText();
+                        seatprice.setText(String.valueOf(seat.getSeatPrice()));
+                        Applycode.setOnAction(event -> {
+                            TotalDiscount.setText(String.valueOf(b.Discountedprice(busID,seat.getSeatID(),DCode)));
+                            TotalPrice.setText(String.valueOf(seat.getSeatPrice()));
+                        });
+                        confirm.setOnAction(event -> {
+                            TicketDetails.setVisible(false);
+                            seatbooking.setVisible(true);
+                            seat.setReserved(true);
+                            SeatsMessage.setText("Seat " + seat.getSeatID() + " is Successfully Booked.");
+                            seatButton.setStyle("-fx-background-color: red;");
+                        });
+
+                        cancel.setOnAction(event -> {
+                            TicketDetails.setVisible(false);
+                            seatbooking.setVisible(true);
+                        });
+
+
+                    }
+
+
+
                 }
                 else {
                     SeatsMessage.setText("Seat " + seat.getSeatID() + " is Already Booked.");
