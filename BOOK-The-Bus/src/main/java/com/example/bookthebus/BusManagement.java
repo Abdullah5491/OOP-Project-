@@ -17,7 +17,11 @@ public class BusManagement {
     public static ArrayList<BusStaff> busStaff = new ArrayList<>();
     public static ArrayList<Seat> seats=new ArrayList<>();
     public static ObservableList<Bus> Availablebuses = FXCollections.observableArrayList();
+    public static ArrayList<Tickets> Tickets = new ArrayList<>();
+    public static ObservableList<Tickets> PTicket = FXCollections.observableArrayList();
     public int bookingcounter=0;
+    public static int ticketcounter=0;
+
 
 
     {
@@ -248,6 +252,7 @@ public void showStaffDuties(String staffID){
                                     buses.get(i).getSeats()[j][k].setBookingID(bookingcounter++);
                                     buses.get(i).setAvailableSeats(buses.get(i).getAvailableSeats()-1);
 
+
                                     for (int m=0;m<discounts.size();m++){
                                         if (discounts.get(m).getDiscountCode().equals(Discountcode)){
                                             buses.get(i).Discounts.add(buses.get(i).getSeats()[j][k].getSeatPrice()*discounts.get(m).getDiscountPercentage());
@@ -388,6 +393,22 @@ public void showStaffDuties(String staffID){
             }
     }
 
+    public static void setAvailableseat(String BusId){
+        for (int i=0;i<buses.size();i++)
+            if (buses.get(i).getId().equals(BusId)){
+                buses.get(i).setAvailableSeats(buses.get(i).getAvailableSeats()-1);
+            }
+    }
+    public static void addTicket(Tickets ticket){
+        Tickets.add(ticket);
+    }
+    public static void showTickets(String passengeremail){
+        PTicket.clear();
+        for (int i=0;i<Tickets.size();i++)
+            if (Tickets.get(i).getPassengeremail().equals(passengeremail)){
+                PTicket.add(Tickets.get(i));
+            }
+    }
 }
 
 

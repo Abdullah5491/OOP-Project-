@@ -35,7 +35,7 @@
                               <TableColumn fx:id="ArrivalCity1" prefWidth="93.0" text="Arrival City" />
                               <TableColumn fx:id="TicketPrice1" prefWidth="93.0" text="Ticket Price" />
                               <TableColumn fx:id="SeatID1" prefWidth="93.0" text="Seat number" />
-                              <TableColumn fx:id="BUSID1" text="ID" />
+                              <TableColumn fx:id="BUSID1" text="Bus ID" />
                            </columns>
                         </TableView>
                      </children>
@@ -94,7 +94,7 @@
                               <TableColumn fx:id="economyprice" editable="false" prefWidth="93.0" text="Economy price" />
                               <TableColumn fx:id="Buisnessprice" editable="false" prefWidth="93.0" text="Buisness price" />
                               <TableColumn fx:id="AvailableSeats" editable="false" prefWidth="93.0" text="Available seats" />
-                              <TableColumn fx:id="BusID" editable="false" minWidth="0.0" prefWidth="87.33327229817712" text="ID" />
+                              <TableColumn fx:id="BusID" editable="false" minWidth="0.0" prefWidth="87.33327229817712" text="Bus ID" />
                           </columns>
                         </TableView>
                      </children>
@@ -116,7 +116,7 @@
                               <Font name="Calisto MT Bold Italic" size="21.0" />
                            </font>
                         </Label>
-                        <Button fx:id="bookingbutton" alignment="CENTER" contentDisplay="CENTER" layoutX="85.0" layoutY="260.0" mnemonicParsing="false" onAction="#bookticket" prefHeight="31.0" prefWidth="129.0" style="-fx-background-radius: 5px; -fx-background-color: green;" styleClass="nav-btn" stylesheets="@Stylesheet.css" text="Book Ticket" textAlignment="CENTER" />
+                        <Button fx:id="bookingbutton" alignment="CENTER" contentDisplay="CENTER" layoutX="85.0" layoutY="260.0" mnemonicParsing="false" onAction="#bookticket" prefHeight="31.0" prefWidth="129.0" style="-fx-background-radius: 5px; -fx-background-color: #15650a;" styleClass="nav-btn" stylesheets="@Stylesheet.css" text="Book Ticket" textAlignment="CENTER" />
                         <Button fx:id="cancelticketbutton" layoutX="86.0" layoutY="300.0" mnemonicParsing="false" onAction="#cancelticket" prefHeight="32.0" prefWidth="129.0" style="-fx-background-radius: 5px;" styleClass="nav-btn" stylesheets="@Stylesheet.css" text="Cancel Ticket" />
                         <Button fx:id="viewticketsbutton" layoutX="86.0" layoutY="339.0" mnemonicParsing="false" onAction="#viewtickets" prefHeight="32.0" prefWidth="129.0" style="-fx-background-radius: 5px;" styleClass="nav-btn" stylesheets="@Stylesheet.css" text="View Tickets" />
                         <Label alignment="CENTER" layoutX="47.0" layoutY="527.0" prefHeight="29.0" prefWidth="200.0" text="Route Rider © 2023 All Rights Reserved." textFill="WHITE">
@@ -146,13 +146,18 @@
                         </TableView>
                      </children>
                   </AnchorPane>
-                  <ImageView fitHeight="56.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="56.0" fitWidth="150.0" layoutX="7.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/Bus.png" />
                      </image>
                   </ImageView>
                   <Button id="Logout" fx:id="Logoutbutton" layoutX="901.0" layoutY="29.0" mnemonicParsing="false" onAction="#Logouttononaction" prefHeight="33.0" prefWidth="75.0" style="-fx-background-color: #2270ae;" text="Logout" />
-                  <Label layoutX="10.0" layoutY="48.0" text="Route Rider">
+                  <Label layoutX="499.0" layoutY="14.0" styleClass="routerider" stylesheets="@Stylesheet.css" text="Route Rider" textFill="#2f69a3">
+                     <font>
+                        <Font name="Mistral" size="39.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="17.0" layoutY="49.0" text="Route Rider">
                      <font>
                         <Font name="Mistral" size="20.0" />
                      </font>

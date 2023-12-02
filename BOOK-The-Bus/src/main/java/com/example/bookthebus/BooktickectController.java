@@ -75,12 +75,18 @@ public class BooktickectController {
     private Label seatprice;
     private String DCode;
 
+
+
     public static String busID;
     public static String passengeremail;
     public static String passengername;
     public static String passengerid;
+    public static int ticketID;
+
     PessengerMenuController a=new PessengerMenuController();
     BusManagement b=new BusManagement();
+
+
 
 
     @FXML
@@ -120,6 +126,8 @@ public class BooktickectController {
                         seatcategory.setText(seat.getCategory());
                         DCode = Discountcode.getText();
                         seatprice.setText(String.valueOf(seat.getSeatPrice()));
+                        TotalPrice.setText(String.valueOf(seat.getSeatPrice()));
+
                         Applycode.setOnAction(event -> {
                             TotalDiscount.setText(String.valueOf(b.Discountedprice(busID,seat.getSeatID(),DCode)));
                             TotalPrice.setText(String.valueOf(seat.getSeatPrice()));
@@ -128,8 +136,13 @@ public class BooktickectController {
                             TicketDetails.setVisible(false);
                             seatbooking.setVisible(true);
                             seat.setReserved(true);
+                            BusManagement.setAvailableseat(busID);
+                           ticketID= PessengerMenuController.ticketid++;
                             SeatsMessage.setText("Seat " + seat.getSeatID() + " is Successfully Booked.");
                             seatButton.setStyle("-fx-background-color: red;");
+                            Tickets ticket = new Tickets(passengername,passengerid,passengeremail,busID,bus.getName(),Cityfrom.getText(),Cityto.getText(),Date.getText(),TotalPrice.getText(),TotalDiscount.getText(),seat.getCategory(),String.valueOf(seat.getSeatID()),String.valueOf(seat.getSeatPrice()),DCode,ticketID);
+
+                            BusManagement.addTicket(ticket);
                         });
 
                         cancel.setOnAction(event -> {
@@ -153,6 +166,10 @@ public class BooktickectController {
             seatGrid.setVgap(10);
             seatGrid.setHgap(10);
         }
+
+
+
+
     }
 
     public void backbuttononaction(ActionEvent e) throws IOException {

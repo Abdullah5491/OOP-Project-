@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Bus {
+
     private String name;
     private String Id;
     private Seat[][] Seats = new Seat[8][4];
@@ -243,6 +244,18 @@ public class Bus {
         }
     }
 
+    {
+        int counter=0;
+        for (int i=0;i<8;i++){
+            for (int j=0;j<4;j++){
+                if (!Seats[i][j].getReserved()){
+                    counter++;
+                }
+            }
+        }
+        AvailableSeats=counter;
+
+}
     public void ShowSeats() {
         for (int i = 0; i < 8; i++) {
             for (int j = 0; j < 4; j++) {

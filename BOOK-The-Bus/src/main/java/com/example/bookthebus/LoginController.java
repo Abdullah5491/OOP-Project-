@@ -121,6 +121,7 @@ public class LoginController {
                     System.out.println(BooktickectController.passengeremail);
                     Displaymessage.setText("Login Successful");
                     PessengerMenuController.pname=BusManagement.passengers.get(i).getName();
+                    PessengerMenuController.passengeremail=BusManagement.passengers.get(i).getAccount().getEmailAddress();
                     BooktickectController.passengername=BusManagement.passengers.get(i).getName();
                     BooktickectController.passengerid=BusManagement.passengers.get(i).getId();
 

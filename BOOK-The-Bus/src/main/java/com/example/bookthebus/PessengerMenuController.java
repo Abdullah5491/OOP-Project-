@@ -76,7 +76,61 @@ public class PessengerMenuController {
     private Button viewticketsbutton;
     @FXML
     private  Label Passengername;
+
+    @FXML
+    private TableColumn<Tickets, String> ArrivalCity;
+
+    @FXML
+    private TableColumn<Tickets, String> ArrivalCity1;
+
+
+    @FXML
+    private TableColumn<Tickets, String> BUSID;
+
+    @FXML
+    private TableColumn<Tickets, String> BUSID1;
+
+    @FXML
+    private TableColumn<Tickets, String> BUSNAME;
+
+    @FXML
+    private TableColumn<Tickets, String> BUSNAME1;
+
+    @FXML
+    private TableView<Tickets> CancelTicket;
+
+    @FXML
+    private TableColumn<Tickets, String> DepartureCity;
+
+    @FXML
+    private TableColumn<Tickets, String> DepartureCity1;
+
+    @FXML
+    private TableColumn<Tickets, String> SeatID;
+
+    @FXML
+    private TableColumn<Tickets, String> SeatID1;
+
+    @FXML
+    private TableColumn<Tickets,Integer> TicketNO;
+
+    @FXML
+    private TableColumn<Tickets, Integer> TicketNO1;
+
+    @FXML
+    private TableColumn<Tickets, String> TicketPrice;
+
+    @FXML
+    private TableColumn<Tickets, String> TicketPrice1;
+
+    @FXML
+    private TableView<Tickets> ticketsTable;
+
+
+
     public static String pname;
+    public static String passengeremail;
+    public static int ticketid=1;
 
 
 
@@ -133,6 +187,7 @@ public class PessengerMenuController {
 
              }
     }
+
     public void bookticket(ActionEvent e){
         bookticket.setVisible(true);
         cancelticket.setVisible(false);
@@ -150,6 +205,24 @@ public class PessengerMenuController {
         cancelticketbutton.setStyle("-fx-background-color: #15650AFF");
         bookingbutton.setStyle("-fx-background-color: #804D00FF");
         viewticketsbutton.setStyle("-fx-background-color: #804D00FF");
+        BusManagement.showTickets(passengeremail);
+        BUSNAME.setCellValueFactory(new PropertyValueFactory<>("Busname"));
+        DepartureCity.setCellValueFactory(new PropertyValueFactory<>("Cityfrom"));
+        ArrivalCity.setCellValueFactory(new PropertyValueFactory<>("Cityto"));
+        BUSID.setCellValueFactory(new PropertyValueFactory<>("BusID"));
+        SeatID.setCellValueFactory(new PropertyValueFactory<>("seatnumber"));
+        TicketNO.setCellValueFactory(new PropertyValueFactory<>("ticketID"));
+        TicketPrice.setCellValueFactory(new PropertyValueFactory<>("TotalPrice"));
+        CancelTicket.setItems(BusManagement.PTicket);
+        CancelTicket.setOnMouseClicked((MouseEvent event) -> {
+            if (event.getClickCount() == 2 && (!CancelTicket.getSelectionModel().isEmpty())) {
+                Tickets selectedTicket = CancelTicket.getSelectionModel().getSelectedItem();
+                int ticketID = selectedTicket.getTicketID();
+                BusManagement.cancelTicket(ticketID);
+                CancelTicket.getItems().remove(selectedTicket);
+                CancelTicket.refresh();
+            }
+        });
 
     }
     public void viewtickets(ActionEvent e){
@@ -159,8 +232,15 @@ public class PessengerMenuController {
         viewticketsbutton.setStyle("-fx-background-color: #15650AFF");
         bookingbutton.setStyle("-fx-background-color: #804D00FF");
         cancelticketbutton.setStyle("-fx-background-color: #804D00FF");
-
-
+        BusManagement.showTickets(passengeremail);
+        BUSNAME1.setCellValueFactory(new PropertyValueFactory<>("Busname"));
+        DepartureCity1.setCellValueFactory(new PropertyValueFactory<>("Cityfrom"));
+        ArrivalCity1.setCellValueFactory(new PropertyValueFactory<>("Cityto"));
+        BUSID1.setCellValueFactory(new PropertyValueFactory<>("BusID"));
+        SeatID1.setCellValueFactory(new PropertyValueFactory<>("seatnumber"));
+        TicketNO1.setCellValueFactory(new PropertyValueFactory<>("ticketID"));
+        TicketPrice1.setCellValueFactory(new PropertyValueFactory<>("TotalPrice"));
+        ticketsTable.setItems(BusManagement.PTicket);
 
     }
 
