@@ -23,6 +23,14 @@ public class Passenger {
         this.account = new Accounts(emailAddress, contactNumber, password);
 
     }
+    public Passenger(String name, String id, String gender, String emailAddress, String contactNumber) {
+        this.name = name;
+        Id = id;
+        this.gender = gender;
+        this.account = new Accounts(emailAddress, contactNumber);
+
+    }
+
 //    public Passenger(String name, long id, String gender, String contactNumber, String password) {
 //        this.name = name;
 //        Id = id;

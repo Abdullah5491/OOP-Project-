@@ -17,7 +17,7 @@ public class BusManagement {
     public static ArrayList<BusStaff> busStaff = new ArrayList<>();
     public static ArrayList<Seat> seats=new ArrayList<>();
     public static ObservableList<Bus> Availablebuses = FXCollections.observableArrayList();
-    public static ArrayList<Tickets> Tickets = new ArrayList<>();
+    public static ObservableList<Tickets> Tickets = FXCollections.observableArrayList();
     public static ObservableList<Tickets> PTicket = FXCollections.observableArrayList();
     public int bookingcounter=0;
     public static int ticketcounter=0;
@@ -145,6 +145,14 @@ public class BusManagement {
       buses.add(bus);
     return true;
 
+}
+public static boolean removeBus(String BusId,String Date){
+    for (int i=0;i<buses.size();i++)
+        if (buses.get(i).getId().equals(BusId)&&buses.get(i).getDate().equals(Date)){
+            buses.remove(buses.get(i));
+            return true;
+        }
+    return false;
 }
 public static boolean addPassenger(Passenger passenger){
     for (int i=0;i<passengers.size();i++)
@@ -287,9 +295,9 @@ public void showStaffDuties(String staffID){
         }
         return 0;
     }
-    public void CancelTicket(String pessengeremail, int SeatID, String BusName) {
+    public void CancelTicket(String pessengeremail, int SeatID, String BudID) {
         for (int i = 0; i < buses.size(); i++) {
-            if (buses.get(i).getName().equals(BusName)) {
+            if (buses.get(i).getId().equals(BudID)) {
                 for (int j = 0; j < 8; j++)
                     for (int k = 0; k < 4; k++)
                         if (buses.get(i).getSeats()[j][k].getSeatID() == SeatID && buses.get(i).getSeats()[j][k].getReserved()) {
@@ -298,6 +306,7 @@ public void showStaffDuties(String staffID){
                                     passengers.get(l).removeBookedSeat(buses.get(i).getSeats()[j][k]);
                                     buses.get(i).getSeats()[j][k].setReserved(false);
                                     buses.get(i).setAvailableSeats(buses.get(i).getAvailableSeats()+1);
+                                    buses.get(i).Sales.remove(buses.get(i).getSeats()[j][k].getSeatPrice());
 
                                 }
                             }
@@ -399,7 +408,8 @@ public void showStaffDuties(String staffID){
                 buses.get(i).setAvailableSeats(buses.get(i).getAvailableSeats()-1);
             }
     }
-    public static void addTicket(Tickets ticket){
+    public static void addTicket(Tickets ticket)
+    {
         Tickets.add(ticket);
     }
     public static void showTickets(String passengeremail){
@@ -409,6 +419,23 @@ public void showStaffDuties(String staffID){
                 PTicket.add(Tickets.get(i));
             }
     }
+       public static void removePTicket(int ticketID){
+        for (int i=0;i<PTicket.size();i++)
+            if (PTicket.get(i).getTicketID()==ticketID){
+                PTicket.remove(PTicket.get(i));
+                break;
+            }
+
+       }
+       public static void removeTicket(int ticketID){
+        for (int i=0;i<Tickets.size();i++)
+            if (Tickets.get(i).getTicketID()==ticketID){
+                Tickets.remove(Tickets.get(i));
+                break;
+            }
+
+       }
+
 }
 
 

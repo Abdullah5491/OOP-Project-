@@ -125,12 +125,19 @@ public class PessengerMenuController {
 
     @FXML
     private TableView<Tickets> ticketsTable;
+    @FXML
+    private Button confirmbtn;
+    @FXML
+    private Button cancelbtn;
+    @FXML
+    private AnchorPane confirmation;
 
 
 
     public static String pname;
     public static String passengeremail;
     public static int ticketid=1;
+    BusManagement Management = new BusManagement();
 
 
 
@@ -177,6 +184,7 @@ public class PessengerMenuController {
                     String busID = selectedBus.getId();
                     BooktickectController b=new BooktickectController();
                     BooktickectController.busID=busID;
+                    BooktickectController.filename="PassengerDashboard.fxml";
                     try {
                         b.open(e);
                     } catch (IOException ex) {
@@ -217,10 +225,22 @@ public class PessengerMenuController {
         CancelTicket.setOnMouseClicked((MouseEvent event) -> {
             if (event.getClickCount() == 2 && (!CancelTicket.getSelectionModel().isEmpty())) {
                 Tickets selectedTicket = CancelTicket.getSelectionModel().getSelectedItem();
-                int ticketID = selectedTicket.getTicketID();
-                BusManagement.cancelTicket(ticketID);
-                CancelTicket.getItems().remove(selectedTicket);
-                CancelTicket.refresh();
+                CancelTicket.setVisible(false);
+                confirmation.setVisible(true);
+                confirmbtn.setOnAction(ActionEvent -> {
+                    int ticketID = selectedTicket.getTicketID();
+                    Management.CancelTicket(passengeremail, Integer.parseInt(selectedTicket.getSeatnumber()), selectedTicket.getBusID());
+                    CancelTicket.getItems().remove(selectedTicket);
+                    BusManagement.removeTicket(ticketID);
+                    BusManagement.PTicket.remove(selectedTicket);
+                    CancelTicket.refresh();
+                    confirmation.setVisible(false);
+                    CancelTicket.setVisible(true);
+                });
+                cancelbtn.setOnAction(ActionEvent -> {
+                    confirmation.setVisible(false);
+                    CancelTicket.setVisible(true);
+                });
             }
         });
 

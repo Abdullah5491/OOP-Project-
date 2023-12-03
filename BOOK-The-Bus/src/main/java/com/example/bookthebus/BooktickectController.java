@@ -74,6 +74,7 @@ public class BooktickectController {
     @FXML
     private Label seatprice;
     private String DCode;
+    public static String filename;
 
 
 
@@ -173,7 +174,7 @@ public class BooktickectController {
     }
 
     public void backbuttononaction(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(getClass().getResource("PassengerDashboard.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource(filename));
         Scene scene = new Scene(root);
         Stage window = (Stage)((Node)e.getSource()).getScene().getWindow();
         window.setScene(scene);

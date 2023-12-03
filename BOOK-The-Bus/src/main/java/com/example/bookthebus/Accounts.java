@@ -11,9 +11,9 @@ public class Accounts {
         this.password = password;
     }
 
-    public Accounts(String contactNumber, String password) {
+    public Accounts(String contactNumber, String emailAddress) {
         ContactNumber = contactNumber;
-        this.password = password;
+        this.emailAddress = emailAddress;
     }
 
     public String getEmailAddress() {
