@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.FileWriter;
 
 public class BusManagement {
-    public static ArrayList<Passenger> passengers = new ArrayList<>();
+    public static ObservableList<Passenger> passengers =  FXCollections.observableArrayList();
     public  static ObservableList<Bus> buses = FXCollections.observableArrayList();
     public static ArrayList<Discounts> discounts = new ArrayList<>();
     public static ArrayList<BusStaff> busStaff = new ArrayList<>();

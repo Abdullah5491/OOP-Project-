@@ -151,6 +151,7 @@ public class PessengerMenuController {
         Arival.setItems(locations);
         Passengername.setText(pname);
 
+
     }
     {
         BusManagement.addBus(new Bus("Faisal Movers", "Fa 123", "4:00", "13:00", "2023-11-26", Terminals.Lahore, Terminals.Karachi, BusCategory.Gold));

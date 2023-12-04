@@ -287,6 +287,18 @@ private Button searchTicketbtn;
 private AnchorPane confirmation;
 private Button confirmbtn;
 private Button cancelbtn;
+@FXML
+private TableView<Passenger> CoustomersTable;
+@FXML
+private TableColumn<Passenger, String> Cname;
+@FXML
+private TableColumn<Passenger, String> Cemail;
+@FXML
+private TableColumn<Passenger, String> Ccnic;
+@FXML
+private TableColumn<Passenger, String> Cphone;
+@FXML
+private TableColumn<Passenger, String> Cgender;
 
 
 
@@ -304,6 +316,7 @@ private Button cancelbtn;
         BookArival.setItems(locations);
         BusManagement.addBus(new Bus("Faisal Movers", "Fa 123", "4:00", "13:00", "2023-11-26", Terminals.Lahore, Terminals.Karachi, BusCategory.Gold));
         BusManagement.addBus(new Bus("Faisal Movers", "fa 124", "6:00", "14:00", "2023-11-26", Terminals.Lahore, Terminals.Karachi, BusCategory.Gold));
+
 
 
     }
@@ -565,6 +578,12 @@ String genger=gender.getValue();
             Dashboard.setStyle("-fx-background-color: #804d00");
             available_buses.setStyle("-fx-background-color: #804d00");
             ticket_booking.setStyle("-fx-background-color: #804d00");
+            Cname.setCellValueFactory(new PropertyValueFactory<>("name"));
+            Cemail.setCellValueFactory(new PropertyValueFactory<>("emailAddress"));
+            Ccnic.setCellValueFactory(new PropertyValueFactory<>("Id"));
+            Cphone.setCellValueFactory(new PropertyValueFactory<>("contactNumber"));
+            Cgender.setCellValueFactory(new PropertyValueFactory<>("gender"));
+            CoustomersTable.setItems(BusManagement.passengers);
 
         }
     }
